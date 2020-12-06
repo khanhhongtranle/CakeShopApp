@@ -24,21 +24,24 @@ namespace ShopCake.ViewModels
 
         public addmodel()
         {
-            _Cake = new Cake();
-            _Cake.Name = "cakes";
-
             _changeNameCommand = new DelegateCommand(OnChangeName, CanChangeName);
+
+            cake = new Cake();
+            cake.Name = "cakesssssssss";
         }
 
         private void OnChangeName(object commandParameter)
         {
-            _Cake.Name = "Walter";
-            _changeNameCommand.InvokeCanExecuteChanged();
+            //cake.Name = "Walter";
+            Cake newCake = new Cake();
+            newCake.Name = "Wailter";
+            this.SetProperty<Cake>(ref cake, newCake);
+            //_changeNameCommand.InvokeCanExecuteChanged();
         }
 
         private bool CanChangeName(object commandParameter)
         {
-            return _Cake.Name != "Walter";
+            return cake.Name != "Walter";
         }
     }
 }

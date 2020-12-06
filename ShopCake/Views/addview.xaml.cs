@@ -24,7 +24,7 @@ namespace ShopCake.Views
         public addview()
         {
             var _addmodel = new addmodel();
-            DataContext = _addmodel._Cake;
+            DataContext = _addmodel;
             InitializeComponent();
         }
     }

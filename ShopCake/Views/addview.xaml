@@ -40,7 +40,7 @@
         <DockPanel Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="1">
             <StackPanel Margin="5,0">
                 <TextBlock Text="Name of cake"/>
-                <TextBox Height="24" Text="{Binding Path=Name}"/>
+                <TextBox Height="24" Text="{Binding Path=_Cake.Name}"/>
             </StackPanel>
         </DockPanel>
         <DockPanel Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="1">
