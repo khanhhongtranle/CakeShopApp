@@ -75,22 +75,20 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Commands\DelegateCommand.cs" />
     <Compile Include="Helpers\DBHelper.cs" />
     <Compile Include="Models\Cake.cs" />
     <Compile Include="Models\Order.cs" />
-    <Compile Include="ViewModels\addmodel.cs" />
-    <Compile Include="ViewModels\homemodel.cs" />
-    <Compile Include="ViewModels\reportmodel.cs" />
-    <Compile Include="ViewModels\ViewModelBase.cs" />
-    <Compile Include="Views\addview.xaml.cs">
-      <DependentUpon>addview.xaml</DependentUpon>
+    <Compile Include="SplashScreen.xaml.cs">
+      <DependentUpon>SplashScreen.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\homeview.xaml.cs">
-      <DependentUpon>homeview.xaml</DependentUpon>
+    <Compile Include="Views\CreateNewView.xaml.cs">
+      <DependentUpon>CreateNewView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\reportview.xaml.cs">
-      <DependentUpon>reportview.xaml</DependentUpon>
+    <Compile Include="Views\HomeView.xaml.cs">
+      <DependentUpon>HomeView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ProductsMenuView.xaml.cs">
+      <DependentUpon>ProductsMenuView.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -104,15 +102,19 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Views\addview.xaml">
+    <Page Include="SplashScreen.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\homeview.xaml">
+    <Page Include="Views\CreateNewView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\reportview.xaml">
+    <Page Include="Views\HomeView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ProductsMenuView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -144,7 +146,40 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Assets\shopping-cart.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\home.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\add.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\report.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\menu.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\prev.png" />
+    <Resource Include="Assets\togo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\cancel.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\cake.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\save.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\cancel-red.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

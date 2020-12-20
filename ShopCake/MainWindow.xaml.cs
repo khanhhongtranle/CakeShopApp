@@ -1,4 +1,4 @@
-﻿using ShopCake.ViewModels;
+﻿using ShopCake.Views;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,24 +21,47 @@ namespace ShopCake
     /// </summary>
     public partial class MainWindow : Window
     {
+
         public MainWindow()
         {
             InitializeComponent();
+            this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+            _frame.Children.Clear();
+            _frame.Children.Add(new HomeView());
+        }
+       
+        private void MenuHome_MouseUp(object sender, RoutedEventArgs e)
+        {
+            _frame.Children.Clear();
+            _frame.Children.Add(new HomeView());
         }
 
-        private void HomeView_Click(object sender, RoutedEventArgs e)
+        private void MenuCakesMenu_MouseUp(object sender, RoutedEventArgs e)
         {
-            DataContext = new homemodel();
+            _frame.Children.Clear();
+            _frame.Children.Add(new ProductsMenuView());
         }
 
-        private void AddView_Click(object sender, RoutedEventArgs e)
+        private void MenuNew_MouseUp(object sender, RoutedEventArgs e)
         {
-            DataContext = new addmodel();
+            _frame.Children.Clear();
+            _frame.Children.Add(new CreateNewView());
         }
 
-        private void ReportView_Click(object sender, RoutedEventArgs e)
+        private void MenuOrder_MouseUp(object sender, RoutedEventArgs e)
         {
-            DataContext = new reportmodel();
+            
+        }
+
+        private void MenuReport_MouseUp(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void _cart(object sender, MouseButtonEventArgs e)
+        {
+            _frame.Children.Clear();
+           // _frame.Children.Add(new UserControlShopping());
         }
     }
 }

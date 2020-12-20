@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace ShopCake.Views
 {
     /// <summary>
-    /// Interaction logic for reportview.xaml
+    /// Interaction logic for CreateNewView.xaml
     /// </summary>
-    public partial class reportview : UserControl
+    public partial class CreateNewView : UserControl
     {
-        public reportview()
+        public CreateNewView()
         {
             InitializeComponent();
         }

@@ -1,12 +1,281 @@
-﻿<UserControl x:Class="ShopCake.Views.homeview"
+﻿<UserControl x:Class="ShopCake.Views.HomeView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:ShopCake.Views"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
-    <Grid Background="White">
-        <TextBlock Text="Home"></TextBlock>
-    </Grid>
+             d:DesignHeight="650" d:DesignWidth="1280">
+    <ScrollViewer  ScrollViewer.VerticalScrollBarVisibility="Hidden">
+        <Grid x:Name="_home">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="650"/>
+                <RowDefinition Height="1200"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0" Name="_frame">
+                <Image Margin="10,0,10,20" Name="Banner1" Source="../Assets/home.png" RenderOptions.BitmapScalingMode="HighQuality" Stretch="Uniform" Panel.ZIndex="4"></Image>
+                <Image Margin="10,0,10,20" Name="Banner2" Source="../Assets/home.png" RenderOptions.BitmapScalingMode="HighQuality" Stretch="Uniform" Panel.ZIndex="3"></Image>
+                <Image Margin="10,0,10,20" Name="Banner3" Source="../Assets/home.png" RenderOptions.BitmapScalingMode="HighQuality" Stretch="Uniform" Panel.ZIndex="4"></Image>
+                <Image Margin="10,0,10,20" Name="Banner4" Source="../Assets/home.png" RenderOptions.BitmapScalingMode="HighQuality" Stretch="Uniform" Panel.ZIndex="4"></Image>
+            </Grid>
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <StackPanel Grid.Column="0" Grid.Row="0" Margin="10 0 5 5">
+                    <Label Padding="25" Content="Bánh mì" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Foreground="#555" FontSize="35" FontFamily="Showcard Gothic" VerticalAlignment="Bottom" Panel.ZIndex="1"/>
+                    <WrapPanel>
+                        <Image Source="../Assets/home.png" Height="40" Width="40" RenderOptions.BitmapScalingMode="HighQuality" Stretch="UniformToFill"></Image>
+                        <TextBlock Padding="10" Text="Đa dạng chủng loại từ truyền thống đến sáng tạo, luôn sẵn sàng cho sự lựa chọn của bạn"
+                               TextWrapping="Wrap" Foreground="#555" FontSize="22" VerticalAlignment="Bottom" Panel.ZIndex="1" Width="397"/>
+                    </WrapPanel>
+                    <Image Source="../Assets/home.png" Height="325" RenderOptions.BitmapScalingMode="HighQuality" Stretch="Uniform"></Image>
+                    <Border  Cursor="Hand" BorderThickness="2" BorderBrush="#555" Background="{Binding Background}" HorizontalAlignment="Center" Margin="0,5,0,0">
+                        <Button Name="_order1" Width="340" Height="60" Content="XEM NGAY" FontWeight="Bold"  FontSize="18" Padding="8">
+                            <Button.Style>
+                                <Style TargetType="{x:Type Button}">
+                                    <Setter Property="Background" Value="White"/>
+                                    <Setter Property="Foreground" Value="#815D37"/>
+                                    <Setter Property="Template">
+                                        <Setter.Value>
+                                            <ControlTemplate TargetType="{x:Type Button}">
+                                                <Border Background="{TemplateBinding Background}" BorderThickness="1">
+                                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                                </Border>
+                                            </ControlTemplate>
+                                        </Setter.Value>
+                                    </Setter>
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Background">
+                                                <Setter.Value>
+                                                    <SolidColorBrush Color="#555"/>
+                                                </Setter.Value>
+                                            </Setter>
+                                            <Setter Property="Foreground">
+                                                <Setter.Value>
+                                                    <SolidColorBrush Color="White"/>
+                                                </Setter.Value>
+                                            </Setter>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Button.Style>
+                        </Button>
+                    </Border>
+                </StackPanel>
+                <StackPanel Grid.Column="1" Grid.Row="0" Margin="10 0 5 5">
+                    <Label Padding="25" Content="Bánh ngọt" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Foreground="#555" FontSize="35" FontFamily="Showcard Gothic" VerticalAlignment="Bottom" Panel.ZIndex="1"/>
+                    <WrapPanel>
+                        <Image Source="../Assets/home.png" Height="40" Width="40" RenderOptions.BitmapScalingMode="HighQuality" Stretch="UniformToFill"></Image>
+                        <TextBlock Padding="10" TextWrapping="Wrap" Text="Những chiếc bánh giòn tan với hương vị ngọt ngào, tuyệt vời cho những tính đồ hảo ngọt." Foreground="#555" FontSize="22" VerticalAlignment="Bottom" Panel.ZIndex="1" Width="397"/>
+                    </WrapPanel>
+                    <Image Source="../Assets/home.png" Height="325" RenderOptions.BitmapScalingMode="HighQuality" Stretch="Uniform"></Image>
+                    <Border Cursor="Hand" BorderThickness="2" BorderBrush="#555" Background="{Binding Background}" HorizontalAlignment="Center" Margin="0,5,0,0">
+                        <Button Name="_order2" Width="340" Height="60" Content="XEM NGAY" FontWeight="Bold" FontSize="18" Padding="8">
+                            <Button.Style>
+                                <Style TargetType="{x:Type Button}">
+                                    <Setter Property="Background" Value="White"/>
+                                    <Setter Property="Foreground" Value="#815D37"/>
+                                    <Setter Property="Template">
+                                        <Setter.Value>
+                                            <ControlTemplate TargetType="{x:Type Button}">
+                                                <Border Background="{TemplateBinding Background}" BorderThickness="1">
+                                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                                </Border>
+                                            </ControlTemplate>
+                                        </Setter.Value>
+                                    </Setter>
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Background">
+                                                <Setter.Value>
+                                                    <SolidColorBrush Color="#555"/>
+                                                </Setter.Value>
+                                            </Setter>
+                                            <Setter Property="Foreground">
+                                                <Setter.Value>
+                                                    <SolidColorBrush Color="White"/>
+                                                </Setter.Value>
+                                            </Setter>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Button.Style>
+                        </Button>
+                    </Border>
+                </StackPanel>
+                <StackPanel Grid.Column="2" Grid.Row="0" Margin="10 0 5 5">
+                    <Label Padding="25" Content="Bánh kem nhỏ" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Foreground="#555" FontSize="35" FontFamily="Showcard Gothic" VerticalAlignment="Bottom" Panel.ZIndex="1"/>
+                    <WrapPanel>
+                        <Image Source="../Assets/home.png" Height="40" Width="40" RenderOptions.BitmapScalingMode="HighQuality" Stretch="UniformToFill"></Image>
+                        <TextBlock Padding="10" Text="Mềm mịn, béo ngọt và tươi mới, chính là những chiếc bánh kem nhỏ của chúng tôi" TextWrapping="Wrap" Foreground="#555" FontSize="22" VerticalAlignment="Bottom" Panel.ZIndex="1" Width="397"/>
+                    </WrapPanel>
+                    <Image Source="../Assets/home.png" Height="325" RenderOptions.BitmapScalingMode="HighQuality" Stretch="Uniform"></Image>
+                    <Border  Cursor="Hand" BorderThickness="2" BorderBrush="#555" Background="{Binding Background}" HorizontalAlignment="Center" Margin="0,5,0,0">
+                        <Button Name="_order3" Width="340" Height="60"  Content="XEM NGAY" FontWeight="Bold"  FontSize="18" Padding="8">
+                            <Button.Style>
+                                <Style TargetType="{x:Type Button}">
+                                    <Setter Property="Background" Value="White"/>
+                                    <Setter Property="Foreground" Value="#815D37"/>
+                                    <Setter Property="Template">
+                                        <Setter.Value>
+                                            <ControlTemplate TargetType="{x:Type Button}">
+                                                <Border Background="{TemplateBinding Background}" BorderThickness="1">
+                                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                                </Border>
+                                            </ControlTemplate>
+                                        </Setter.Value>
+                                    </Setter>
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Background">
+                                                <Setter.Value>
+                                                    <SolidColorBrush Color="#555"/>
+                                                </Setter.Value>
+                                            </Setter>
+                                            <Setter Property="Foreground">
+                                                <Setter.Value>
+                                                    <SolidColorBrush Color="White"/>
+                                                </Setter.Value>
+                                            </Setter>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Button.Style>
+                        </Button>
+                    </Border>
+                </StackPanel>
+                <StackPanel Grid.Column="1" Grid.Row="1" Margin="10 0 5 5">
+                    <Label Padding="25" Content="Bánh đóng gói" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Foreground="#555" FontSize="35" FontFamily="Showcard Gothic" VerticalAlignment="Bottom" Panel.ZIndex="1"/>
+                    <WrapPanel>
+                        <Image Source="../Assets/home.png" Height="40" Width="40" RenderOptions.BitmapScalingMode="HighQuality" Stretch="UniformToFill"></Image>
+                        <TextBlock Padding="10" Text="Sản phẩm đóng gói tiện dụng, nhưng vẫn đảm bảo ngon miệng và dinh dưỡng" TextWrapping="Wrap" Foreground="#555" FontSize="22" VerticalAlignment="Bottom" Panel.ZIndex="1" Width="397"/>
+                    </WrapPanel>
+                    <Image Source="../Assets/home.png" Height="325" RenderOptions.BitmapScalingMode="HighQuality" Stretch="Uniform"></Image>
+                    <Border  Cursor="Hand" BorderThickness="2" BorderBrush="#555" Background="{Binding Background}" HorizontalAlignment="Center" Margin="0,5,0,0">
+                        <Button Name="_order5" Width="340" Height="60" Content="XEM NGAY" FontWeight="Bold"  FontSize="18" Padding="8">
+                            <Button.Style>
+                                <Style TargetType="{x:Type Button}">
+                                    <Setter Property="Background" Value="White"/>
+                                    <Setter Property="Foreground" Value="#815D37"/>
+                                    <Setter Property="Template">
+                                        <Setter.Value>
+                                            <ControlTemplate TargetType="{x:Type Button}">
+                                                <Border Background="{TemplateBinding Background}" BorderThickness="1">
+                                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                                </Border>
+                                            </ControlTemplate>
+                                        </Setter.Value>
+                                    </Setter>
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Background">
+                                                <Setter.Value>
+                                                    <SolidColorBrush Color="#555"/>
+                                                </Setter.Value>
+                                            </Setter>
+                                            <Setter Property="Foreground">
+                                                <Setter.Value>
+                                                    <SolidColorBrush Color="White"/>
+                                                </Setter.Value>
+                                            </Setter>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Button.Style>
+                        </Button>
+                    </Border>
+                </StackPanel>
+                <StackPanel Grid.Column="2" Grid.Row="1" Margin="10 0 5 5">
+                    <Label Padding="25" Content="Bánh theo mùa" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Foreground="#555" FontSize="35" FontFamily="Showcard Gothic" VerticalAlignment="Bottom" Panel.ZIndex="1"/>
+                    <WrapPanel>
+                        <Image Source="../Assets/home.png" Height="40" Width="40" RenderOptions.BitmapScalingMode="HighQuality" Stretch="UniformToFill"></Image>
+                        <TextBlock Padding="10" Text="Vào những dịp đặt biệt trong năm, các sản phẩm của chúng tôi sẽ luôn đồng hành cùng bạn." TextWrapping="Wrap" Foreground="#555" FontSize="22" VerticalAlignment="Bottom" Panel.ZIndex="1" Width="397"/>
+                    </WrapPanel>
+                    <Image Source="../Assets/home.png" Height="325" RenderOptions.BitmapScalingMode="HighQuality" Stretch="Uniform"></Image>
+                    <Border  Cursor="Hand" BorderThickness="2" BorderBrush="#555" Background="{Binding Background}" HorizontalAlignment="Center" Margin="0,5,0,0">
+                        <Button Name="_order4" Width="340" Height="60" Content="XEM NGAY" FontWeight="Bold"  FontSize="18" Padding="8">
+                            <Button.Style>
+                                <Style TargetType="{x:Type Button}">
+                                    <Setter Property="Background" Value="White"/>
+                                    <Setter Property="Foreground" Value="#815D37"/>
+                                    <Setter Property="Template">
+                                        <Setter.Value>
+                                            <ControlTemplate TargetType="{x:Type Button}">
+                                                <Border Background="{TemplateBinding Background}" BorderThickness="1">
+                                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                                </Border>
+                                            </ControlTemplate>
+                                        </Setter.Value>
+                                    </Setter>
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Background">
+                                                <Setter.Value>
+                                                    <SolidColorBrush Color="#555"/>
+                                                </Setter.Value>
+                                            </Setter>
+                                            <Setter Property="Foreground">
+                                                <Setter.Value>
+                                                    <SolidColorBrush Color="White"/>
+                                                </Setter.Value>
+                                            </Setter>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Button.Style>
+                        </Button>
+                    </Border>
+                </StackPanel>
+                <StackPanel Grid.Column="0" Grid.Row="1" Margin="10 0 5 5">
+                    <Label Padding="25" Content="Bánh kem" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Foreground="#555" FontSize="35" FontFamily="Showcard Gothic" VerticalAlignment="Bottom" Panel.ZIndex="1"/>
+                    <WrapPanel>
+                        <Image Source="../Assets/home.png" Height="40" Width="40" RenderOptions.BitmapScalingMode="HighQuality" Stretch="UniformToFill"></Image>
+                        <TextBlock Padding="10" Text="Với nhiều thiết kế sáng tạo và mới lạ, mỗi chiếc bánh luôn là một kiệt tác" TextWrapping="Wrap" Foreground="#555" FontSize="22" Height="107" VerticalAlignment="Bottom" Panel.ZIndex="1" Width="397"/>
+                    </WrapPanel>
+                    <Image Source="../Assets/home.png" Height="325" RenderOptions.BitmapScalingMode="HighQuality" Stretch="Uniform"></Image>
+                    <Border Cursor="Hand" BorderThickness="2" BorderBrush="#555" Background="{Binding Background}" HorizontalAlignment="Center" Margin="0,5,0,0">
+                        <Button Name="_order6" Width="340" Height="60" Content="XEM NGAY" FontWeight="Bold"  FontSize="18" Padding="8">
+                            <Button.Style>
+                                <Style TargetType="{x:Type Button}">
+                                    <Setter Property="Background" Value="White"/>
+                                    <Setter Property="Foreground" Value="#815D37"/>
+                                    <Setter Property="Template">
+                                        <Setter.Value>
+                                            <ControlTemplate TargetType="{x:Type Button}">
+                                                <Border Background="{TemplateBinding Background}" BorderThickness="1">
+                                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                                </Border>
+                                            </ControlTemplate>
+                                        </Setter.Value>
+                                    </Setter>
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Background">
+                                                <Setter.Value>
+                                                    <SolidColorBrush Color="#555"/>
+                                                </Setter.Value>
+                                            </Setter>
+                                            <Setter Property="Foreground">
+                                                <Setter.Value>
+                                                    <SolidColorBrush Color="White"/>
+                                                </Setter.Value>
+                                            </Setter>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Button.Style>
+                        </Button>
+                    </Border>
+                </StackPanel>
+            </Grid>
+        </Grid>
+    </ScrollViewer>
 </UserControl>

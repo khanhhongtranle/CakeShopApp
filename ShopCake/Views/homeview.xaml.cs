@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace ShopCake.Views
 {
     /// <summary>
-    /// Interaction logic for UserControl1.xaml
+    /// Interaction logic for HomeView.xaml
     /// </summary>
-    public partial class homeview : UserControl
+    public partial class HomeView : UserControl
     {
-        public homeview()
+        public HomeView()
         {
             InitializeComponent();
         }

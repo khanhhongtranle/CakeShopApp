@@ -1,5 +1,4 @@
-﻿using ShopCake.ViewModels;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,14 +16,12 @@ using System.Windows.Shapes;
 namespace ShopCake.Views
 {
     /// <summary>
-    /// Interaction logic for addview.xaml
+    /// Interaction logic for ProductsMenuView.xaml
     /// </summary>
-    public partial class addview : UserControl
+    public partial class ProductsMenuView : UserControl
     {
-        public addview()
+        public ProductsMenuView()
         {
-            var _addmodel = new addmodel();
-            DataContext = _addmodel;
             InitializeComponent();
         }
     }

@@ -4,54 +4,55 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ShopCake"
-        xmlns:views="clr-namespace:ShopCake.Views"
-        xmlns:viewmodels="clr-namespace:ShopCake.ViewModels"
         mc:Ignorable="d"
-        Title="Cake Shop" Height="720" Width="1280">
+        Title="Cake Shop" Height="620" Width="1280">
     <Window.Resources>
-        <DataTemplate x:Name="homeTemplate" DataType="{x:Type viewmodels:homemodel}">
-            <views:homeview DataContext="{Binding}"/>
-        </DataTemplate>
-        <DataTemplate x:Name="addTemplate" DataType="{x:Type viewmodels:addmodel}">
-            <views:addview DataContext="{Binding}"/>
-        </DataTemplate>
-        <DataTemplate x:Name="reportTemplate" DataType="{x:Type viewmodels:reportmodel}">
-            <views:reportview DataContext="{Binding}"/>
-        </DataTemplate>
+        
     </Window.Resources>
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition />
-            <ColumnDefinition />
-            <ColumnDefinition />
-            <ColumnDefinition />
-            <ColumnDefinition />
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition />
-            <RowDefinition />
-            <RowDefinition />
-            <RowDefinition />
-            <RowDefinition />
-            <RowDefinition />
-            <RowDefinition />
-            <RowDefinition />
-        </Grid.RowDefinitions>
-        <DockPanel Background="Gray" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="5">
-            <StackPanel Orientation="Horizontal">
-                <Button Content="Back"/>
-                <Button Content="Home" Click="HomeView_Click"/>
-                <Button Content="Add new" Click="AddView_Click"/>
-                <Button Content="Order"/>
-                <Button Content="Report" Click="ReportView_Click"/>
+    <DockPanel Name="_mainWindow" LastChildFill="True">
+        <Grid Background="#efefef" Height="100" DockPanel.Dock="Top">
+            <StackPanel Orientation="Horizontal" Height="100" Name="topBar" HorizontalAlignment="Right" Margin="0 0 250 0">
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="15,0,0,0">
+                    <Image Source="Assets/home.png" Opacity="0.6" RenderOptions.BitmapScalingMode="HighQuality" Width="40" HorizontalAlignment="Center" VerticalAlignment="Center"></Image>
+                    <Label Name="MenuHome" MouseUp="MenuHome_MouseUp" Cursor="Hand" Content="HOME" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Foreground="#555" FontSize="18" VerticalAlignment="Center"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="15,0,0,0">
+                    <Image Source="Assets/menu.png" Opacity="0.8" RenderOptions.BitmapScalingMode="HighQuality" Width="40" HorizontalAlignment="Center" VerticalAlignment="Center"></Image>
+                    <Label Name="MenuCakesMenu" MouseUp="MenuCakesMenu_MouseUp" Cursor="Hand" Content="MENU" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Foreground="#555" FontSize="18" VerticalAlignment="Center"></Label>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="15,0,0,0">
+                    <Image Source="Assets/shopping-cart.png" Opacity="0.6" RenderOptions.BitmapScalingMode="HighQuality" Width="30" HorizontalAlignment="Center" VerticalAlignment="Center"></Image>
+                    <Label Name="MenuOrder" MouseUp="MenuOrder_MouseUp" Cursor="Hand" Content="ORDER" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Foreground="#555" FontSize="18" VerticalAlignment="Center"></Label>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="15,0,0,0">
+                    <Image Source="Assets/add.png" Opacity="0.6" RenderOptions.BitmapScalingMode="HighQuality" Width="37" HorizontalAlignment="Center" VerticalAlignment="Center"></Image>
+                    <Label Name="MenuNew" MouseUp="MenuNew_MouseUp" Cursor="Hand" Content="NEW" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Foreground="#555" FontSize="18" VerticalAlignment="Center"></Label>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="18,0,0,0">
+                    <Image Source="Assets/report.png" Opacity="0.6" RenderOptions.BitmapScalingMode="HighQuality" Width="25" HorizontalAlignment="Center" VerticalAlignment="Center"></Image>
+                    <Label Name="MenuReport" MouseUp="MenuReport_MouseUp" Cursor="Hand" Content="REPORT" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Foreground="#555" FontSize="18" VerticalAlignment="Center"></Label>
+                </StackPanel>
             </StackPanel>
-        </DockPanel>
-        <DockPanel Background="White" Grid.Row="1" Grid.Column="0" Grid.RowSpan="8">
-            <StackPanel>
-                <TextBlock Text="Kinds of cake"/>
-                <!--list kinds of cake-->
+            <Border Width="200" Height="50" Margin="0,0,25,0" BorderThickness="1.2" BorderBrush="#555" CornerRadius="15" HorizontalAlignment="Right">
+                <StackPanel MouseLeftButtonUp="_cart" Orientation="Horizontal" VerticalAlignment="Center" Margin="0,0,0,0">
+                    <Label Cursor="Hand" Content="Giỏ hàng/0 VNĐ" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Foreground="#555" FontSize="18" Margin="7 0 0 0" VerticalAlignment="Center"/>
+                    <Border Width="40" Margin="0,0,25,0">
+                        <Grid>
+                            <Image Source="Assets/shopping-cart.png" Opacity="0.6" RenderOptions.BitmapScalingMode="HighQuality" Width="40" HorizontalAlignment="Center" VerticalAlignment="Center"></Image>
+                            <Label Name="Total" Cursor="Hand" Content="0" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Foreground="#815D37" FontSize="12" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10,2,0,0"/>
+                        </Grid>
+                    </Border>
+                </StackPanel>
+            </Border>
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Left" VerticalAlignment="Center">
+                <Image x:Name="imgLogo" MouseUp="MenuHome_MouseUp" Cursor="Hand" Source="Assets/logo.png" RenderOptions.BitmapScalingMode="HighQuality" 
+                       Width="80" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0 0 0 0" Height="130"/>
+
+
             </StackPanel>
-        </DockPanel>
-        <ContentControl Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="5" Grid.RowSpan="7" Content="{Binding}"/>
-    </Grid>
+        </Grid>
+        <Grid Name="_frame">
+
+        </Grid>
+    </DockPanel>
 </Window>
