@@ -37,5 +37,15 @@ namespace ShopCake.Helpers
             }
             return new string(result.ToArray());
         }
+
+        public static bool isANumber(string s, out double parsedNumber)
+        {
+            if (double.TryParse(s, out parsedNumber))
+            {
+                // parsedNumber is a valid number!
+                return true;
+            }
+            return false;
+        }
     }
 }

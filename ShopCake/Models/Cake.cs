@@ -29,11 +29,11 @@ namespace ShopCake.Models
             //and insert into images table, cake_img table
 
             dBHelper.query("insert into cakes(id, name, date_entered, kindofcake_id, unit_price) " +
-                $"values('{this.Entered_Date}', {this.Name}, '{this.Entered_Date}', {this.Kind}, '{this.Unit_Price}')");
+                $"values('{this.Entered_Date}', '{this.Name}', '{this.Entered_Date}', {this.Kind}, '{this.Unit_Price}')");
 
             foreach(var img in this.Images_List)
             {
-                var img_id = this.Entered_Date + this.Name;
+                var img_id = this.Name + img;
                 dBHelper.query("insert into images(id, link)" +
                                 $"values('{img_id}', '{img}')");
                 dBHelper.query("insert into cake_img(cake_id, img_id)" +

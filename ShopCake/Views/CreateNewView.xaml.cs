@@ -81,12 +81,23 @@ namespace ShopCake.Views
                 DateTime localDate = DateTime.Now; //get current data time 
                 cake.Entered_Date = localDate.ToString(); //set entered date for new cake
                 cake.Kind = int.Parse(typeItem.Id);
+                cake.Name = textBoxName.Text;
+                cake.Description = textBoxDescription.Text;
+                double unit_price_test;
+                if (StringHelper.isANumber(textBoxPrice.Text, out unit_price_test))
+                {
+                    cake.Unit_Price = unit_price_test;
+                }
+                else
+                {
+                    MessageBoxResult errorMsgBox = MessageBox.Show("Unit price field must be a number", "Notification");
+                    return;
+                }
                 List<String> imgListToSave = new List<string>(); 
 
                 //copy uploading images
-                var folder = AppDomain.CurrentDomain.BaseDirectory;
                 //create a new folder images if not exists
-                string pathImagesFolder = System.IO.Path.Combine(folder, "Images");
+                string pathImagesFolder = "Images\\"; //System.IO.Path.Combine(folder, "Images");
                 if (!Directory.Exists(pathImagesFolder))
                 {
                     //if not exists, create new folder
@@ -106,15 +117,19 @@ namespace ShopCake.Views
                 cake.insertToDatabase(dBHelper);
 
                 MessageBoxResult resultSuccess = MessageBox.Show("Created successfully", "Notification");
+
+                _addCakes.Children.Clear();
+                _addCakes.Children.Add(new ProductsMenuView());
             }
         }
 
         private void imgCancel_MouseDown(object sender, MouseButtonEventArgs e)
         {
             //clear all
-            cake.Name = "";
-            cake.Description = "";
-            cake.Unit_Price = 0;
+            textBoxName.Text = "";
+            textBoxDescription.Text = "";
+            textBoxPrice.Text = "";
+            imagesList.Clear();
         }
     }
 }

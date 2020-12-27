@@ -34,9 +34,7 @@
                         <TextBox Padding="5"
                         Name="textBoxName"
                         FontSize="25"
-                        BorderThickness="0" Margin="8.667,0,9.333,0"
-                        Text="{Binding Path=cake.Name}"         
-                        />
+                        BorderThickness="0" Margin="8.667,0,9.333,0"/>
                     </Border>
                 </StackPanel>
             </Grid>
@@ -47,9 +45,7 @@
                         <TextBox
                         Name="textBoxPrice"
                         FontSize="25" Padding="5"
-                        BorderThickness="0" Margin="8.667,0,9.333,0"
-                        Text="{Binding Path=cake.Unit_Price}"
-                        />
+                        BorderThickness="0" Margin="8.667,0,9.333,0"/>
                     </Border>
                 </StackPanel>
             </Grid>
@@ -73,7 +69,6 @@
                         BorderThickness="0"
                         TextWrapping="Wrap"
                         AcceptsReturn="True" Height="262" Margin="8.667,0,9.333,0"
-                        Text="{Binding Path=cake.Description}"
                         />
                     </Border>
                 </StackPanel>
