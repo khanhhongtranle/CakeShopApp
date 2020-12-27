@@ -50,7 +50,8 @@ namespace ShopCake
 
         private void MenuOrder_MouseUp(object sender, RoutedEventArgs e)
         {
-            
+            _frame.Children.Clear();
+            _frame.Children.Add(new OderView());
         }
 
         private void MenuReport_MouseUp(object sender, RoutedEventArgs e)
