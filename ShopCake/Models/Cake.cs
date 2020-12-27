@@ -1,4 +1,6 @@
-﻿using System.Windows.Input;
+﻿using System;
+using System.Collections.Generic;
+using System.Windows.Input;
 
 namespace ShopCake.Models
 {
@@ -6,16 +8,37 @@ namespace ShopCake.Models
     {
         public Cake()
         {
-
+            this.Name = "";
+            this.Description = "";
+            this.Unit_Price = 0;
+            this.Entered_Date = "";
+            this.Images_List = new List<string>();
         }
 
+        public string Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
         public string Entered_Date { get; set; }
-        public string Kind { get; set; }
+        public int Kind { get; set; }
         public double Unit_Price { get; set; }
-        public int In_Store { get; set; }
+        public List<String> Images_List { get; set; }
 
-        //public ICommand ChangeNameCommand { get; }
+        public void insertToDatabase(DBHelper dBHelper)
+        {
+            //insert into cakes table 
+            //and insert into images table, cake_img table
+
+            dBHelper.query("insert into cakes(id, name, date_entered, kindofcake_id, unit_price) " +
+                $"values('{this.Entered_Date}', {this.Name}, '{this.Entered_Date}', {this.Kind}, '{this.Unit_Price}')");
+
+            foreach(var img in this.Images_List)
+            {
+                var img_id = this.Entered_Date + this.Name;
+                dBHelper.query("insert into images(id, link)" +
+                                $"values('{img_id}', '{img}')");
+                dBHelper.query("insert into cake_img(cake_id, img_id)" +
+                                $"values('{this.Entered_Date}', '{img_id}')");
+            }
+        }
     }
 }

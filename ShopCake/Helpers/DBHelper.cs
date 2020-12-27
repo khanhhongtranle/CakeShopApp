@@ -8,49 +8,51 @@ public class DBHelper
 
     public DBHelper()
     {
-        this.conn = new SQLiteConnection(@"URI=file:/Users/tkt/Desktop/khanhhongtranle/dbhelper123/dbhelper123/db.sqlite");
+        this.conn = new SQLiteConnection(@"URI=file:D:\STUDY\NAM_TU\LAP_TRINH_WINDOWS\projects\ShopCake\ShopCake\Db\db.sqlite");
         this.conn.Open();
+    }
 
+    public void createDatabase()
+    {
         var cmd = new SQLiteCommand(this.conn);
         cmd.CommandText = @"CREATE TABLE IF NOT EXISTS cakes(
-id INTEGER PRIMARY KEY,
-name TEXT, description TEXT,
-date_entered DATETIME,
-kindofcake_id int,
-unit_price INTEGER,
-in_stock INTEGER)";
+                            id TEXT PRIMARY KEY,
+                            name TEXT, description TEXT,
+                            date_entered DATETIME,
+                            kindofcake_id int,
+                            unit_price INTEGER)";
         cmd.ExecuteNonQuery();
 
         cmd.CommandText = @"CREATE TABLE IF NOT EXISTS kindofcakes(
-id INTEGER PRIMARY KEY,
-name TEXT)";
+                            id INTEGER PRIMARY KEY,
+                            name TEXT)";
         cmd.ExecuteNonQuery();
 
         cmd.CommandText = @"CREATE TABLE IF NOT EXISTS orders(
-id INTEGER PRIMARY KEY,
-date_entered DATETIME,
-total INTEGER)";
+                            id TEXT PRIMARY KEY,
+                            date_entered DATETIME,
+                            total INTEGER)";
         cmd.ExecuteNonQuery();
 
         cmd.CommandText = @"CREATE TABLE IF NOT EXISTS cake_img(
-cake_id INTEGER,
-img_id INTEGER)";
+                            cake_id TEXT,
+                            img_id TEXT)";
         cmd.ExecuteNonQuery();
 
         cmd.CommandText = @"CREATE TABLE IF NOT EXISTS images(
-id INTEGER PRIMARY KEY,
-link TEXT)";
+                            id TEXT PRIMARY KEY,
+                            link TEXT)";
         cmd.ExecuteNonQuery();
 
         cmd.CommandText = @"CREATE TABLE IF NOT EXISTS order_cake(
-order_id INTEGER,
-cake_id INTEGER,
-quantity INTEGER,
-price INTEGER,
-amount INTEGER);";
+                            order_id TEXT,
+                            cake_id TEXT,
+                            quantity INTEGER,
+                            price INTEGER,
+                            amount INTEGER);";
         cmd.ExecuteNonQuery();
     }
-
+    
     public List<NameValueCollection> query(string sql, bool returnResult = false)
     {
         List<NameValueCollection> dataList = new List<NameValueCollection>();
@@ -58,8 +60,8 @@ amount INTEGER);";
             
         if (returnResult)
         {
-            using var cmd = new SQLiteCommand(stm, this.conn);
-            using SQLiteDataReader rdr = cmd.ExecuteReader();
+             var cmd = new SQLiteCommand(stm, this.conn);
+             SQLiteDataReader rdr = cmd.ExecuteReader();
             while (rdr.Read())
             {
                 dataList.Add(rdr.GetValues());
@@ -67,13 +69,13 @@ amount INTEGER);";
         }
         else
         {
-            using var cmd = new SQLiteCommand(this.conn);
+             var cmd = new SQLiteCommand(this.conn);
             cmd.CommandText = sql;
             cmd.ExecuteNonQuery(); 
         }
         return dataList;
     }
-
+    
     ~DBHelper()
     {
         conn.Close();

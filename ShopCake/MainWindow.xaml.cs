@@ -26,6 +26,7 @@ namespace ShopCake
         {
             InitializeComponent();
             this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+           
             _frame.Children.Clear();
             _frame.Children.Add(new HomeView());
         }

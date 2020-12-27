@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ShopCake"
         mc:Ignorable="d"
-        Title="Cake Shop" Height="620" Width="1280">
+        Title="Cake Shop" Height="650" Width="1280">
     <Window.Resources>
         
     </Window.Resources>

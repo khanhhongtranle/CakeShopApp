@@ -1,5 +1,10 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using ShopCake.Helpers;
+using ShopCake.Models;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,9 +25,96 @@ namespace ShopCake.Views
     /// </summary>
     public partial class CreateNewView : UserControl
     {
+        private DBHelper dBHelper;
+        private Cake cake;
+        private ObservableCollection<String> imagesList;
+        private List<AKindOfCake> kindsList;
+
         public CreateNewView()
         {
             InitializeComponent();
+            dBHelper = new DBHelper();
+            cake = new Cake();
+            imagesList = new ObservableCollection<string>();
+            kindsList = new List<AKindOfCake>();
+
+            //read kind of cakes list from database
+            var kindsRaw = dBHelper.query("select * from kindofcakes", true);
+            foreach (var aKind in kindsRaw)
+            {
+                kindsList.Add(new AKindOfCake(aKind["id"], aKind["name"]));
+            }
+            //setup binding kind combobox element
+            comboBoxitemKind.ItemsSource = kindsList;
+            comboBoxitemKind.DisplayMemberPath = "Name";
+            comboBoxitemKind.SelectedValuePath = "Id";
+        }
+
+        private void ChooseImg_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog open = new OpenFileDialog();
+            open.Multiselect = true;
+            open.Filter = "Image Files(*.jpg; *.png; *.jpeg; *.gif; *.bmp)|*.jpg; *.png; *.jpeg; *.gif; *.bmp";
+            bool? result = open.ShowDialog();
+            if (result == true)
+            {
+                foreach (string item in open.FileNames)
+                {
+                    imagesList.Add(item);
+                }
+                Images.ItemsSource = imagesList;
+            }
+        }
+
+        private void imgSave_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            //check fields
+            AKindOfCake typeItem = (AKindOfCake)comboBoxitemKind.SelectedItem;
+            /*if (cake.Name == "" || cake.Description == "" || typeItem == null)
+            {
+                MessageBoxResult resultFailed = MessageBox.Show("Fields must be filled out", "Notification");
+                return;
+            }*/
+            //fields is filled out
+            MessageBoxResult resultComfirm = MessageBox.Show("Do you really want to create new cake?", "Notification", MessageBoxButton.OKCancel);
+            if (resultComfirm == MessageBoxResult.OK) {
+                DateTime localDate = DateTime.Now; //get current data time 
+                cake.Entered_Date = localDate.ToString(); //set entered date for new cake
+                cake.Kind = int.Parse(typeItem.Id);
+                List<String> imgListToSave = new List<string>(); 
+
+                //copy uploading images
+                var folder = AppDomain.CurrentDomain.BaseDirectory;
+                //create a new folder images if not exists
+                string pathImagesFolder = System.IO.Path.Combine(folder, "Images");
+                if (!Directory.Exists(pathImagesFolder))
+                {
+                    //if not exists, create new folder
+                    Directory.CreateDirectory(pathImagesFolder);
+                }
+                foreach(var image in imagesList)
+                {
+                    string reversedImage = StringHelper.Reverse(image);
+                    string reversedFileName = StringHelper.CutStringTo(reversedImage, '\\');
+                    string fileName = StringHelper.Reverse(reversedFileName);
+                    string destFile = System.IO.Path.Combine(pathImagesFolder, fileName);
+                    File.Copy(image, destFile, true);
+                    imgListToSave.Add(destFile);
+                }
+                cake.Images_List = imgListToSave;
+                //insert to database
+                cake.insertToDatabase(dBHelper);
+
+                MessageBoxResult resultSuccess = MessageBox.Show("Created successfully", "Notification");
+            }
+        }
+
+        private void imgCancel_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            //clear all
+            cake.Name = "";
+            cake.Description = "";
+            cake.Unit_Price = 0;
         }
     }
 }

@@ -20,7 +20,7 @@
                         <RowDefinition/>
                     </Grid.RowDefinitions>
                     <Grid Grid.Row="0" Margin="10">
-                        <Image Source="{Binding ImagePath, Converter={StaticResource imagePathConverter}}" RenderOptions.BitmapScalingMode="HighQuality" Stretch="UniformToFill"></Image>
+                        <Image  RenderOptions.BitmapScalingMode="HighQuality" Stretch="UniformToFill"></Image>
                     </Grid>
                     <Grid Grid.Row="1" Margin="5">
                         <ItemsControl Margin="5,0,0,0"  Name="PreviewPhoto">
@@ -38,7 +38,7 @@
                             </ItemsControl.ItemsPanel>
                             <ItemsControl.ItemTemplate>
                                 <DataTemplate>
-                                    <ItemsControl Cursor="Hand" ItemsSource="{Binding listImages}">
+                                    <ItemsControl Cursor="Hand" >
                                         <ItemsControl.ItemsPanel>
                                             <ItemsPanelTemplate>
                                                 <WrapPanel Orientation="Horizontal"></WrapPanel>
@@ -49,7 +49,7 @@
                                                 <WrapPanel>
                                                     <Border Width="140" Height="140" Margin="0,0,5,0">
                                                         <Border.Background>
-                                                            <ImageBrush Stretch="UniformToFill" ImageSource="{Binding}" RenderOptions.BitmapScalingMode="HighQuality"/>
+                                                            <ImageBrush Stretch="UniformToFill"  RenderOptions.BitmapScalingMode="HighQuality"/>
                                                         </Border.Background>
                                                     </Border>
                                                 </WrapPanel>
@@ -71,7 +71,7 @@
                             <Label Content="TRANG CHỦ /" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Foreground="#555" FontSize="18" VerticalAlignment="Center" HorizontalAlignment="Left"/>
                             <Label Content="{Binding ProductType}" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Foreground="#555" FontSize="18" VerticalAlignment="Center" HorizontalAlignment="Left"/>
                         </StackPanel>
-                        <StackPanel Cursor="Hand" Name="_editProduct" MouseLeftButtonUp="_editProduct_MouseLeftButtonUp" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Top">
+                        <StackPanel Cursor="Hand" Name="_editProduct" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Top">
                             <Label Content="CHỈNH SỬA THÔNG TIN" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Foreground="#555" FontSize="18" VerticalAlignment="Center" HorizontalAlignment="Left"/>
                         </StackPanel>
                     </Grid>
@@ -88,7 +88,7 @@
                                 <TextBlock TextWrapping="Wrap" Text="{Binding Description}" FontSize="22" Foreground="#555" VerticalAlignment="Center" TextAlignment="Justify"></TextBlock>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" Margin="6,16,0,50">
-                                <Border Height="50" Name="Minus" MouseUp="Minus_MouseUp" Cursor="Hand" Width="20" Margin="0,0,5,0" HorizontalAlignment="Center" VerticalAlignment="Center" Background="White">
+                                <Border Height="50" Name="Minus" Cursor="Hand" Width="20" Margin="0,0,5,0" HorizontalAlignment="Center" VerticalAlignment="Center" Background="White">
                                 </Border>
                                 <Border Height="50" BorderBrush="#555" BorderThickness="2" Margin="0,0,5,0" Background="White">
                                     <TextBox
@@ -99,9 +99,9 @@
                                             Height="50"              
                                         VerticalContentAlignment="Center" HorizontalContentAlignment="Center" TextAlignment="Center" Margin="0"/>
                                 </Border>
-                                <Border Height="50" Name="Plus" MouseUp="Plus_MouseUp" Cursor="Hand" Width="20" Margin="0,0,20,0" Background="White">
+                                <Border Height="50" Name="Plus"  Cursor="Hand" Width="20" Margin="0,0,20,0" Background="White">
                                 </Border>
-                                <Border MouseLeftButtonUp="orderProduct" Cursor="Hand" BorderThickness="2" BorderBrush="#d26e4b" Background="#d26e4b" HorizontalAlignment="Left">
+                                <Border  Cursor="Hand" BorderThickness="2" BorderBrush="#d26e4b" Background="#d26e4b" HorizontalAlignment="Left">
                                     <Label Padding="8" FontSize="20" Foreground="White" VerticalContentAlignment="Center" Background="{x:Null}" FontWeight="Bold">
                                         <Label.Content>
                                             <AccessText Text="MUA HÀNG"></AccessText>

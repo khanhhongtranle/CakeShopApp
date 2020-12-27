@@ -15,13 +15,11 @@
             <Grid Grid.Row="0" HorizontalAlignment="Left">
                 <StackPanel VerticalAlignment="Center" HorizontalAlignment="Left">
                     <ComboBox Name="_nameComboBox" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" Foreground="#555" FontWeight="DemiBold" FontSize="18" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="20 0 0 0" Padding="4,4,4,4">
-                        <ComboBoxItem Content="TẤT CẢ LOẠI BÁNH" FontSize="15"></ComboBoxItem>
-                        <ComboBoxItem Content="BÁNH NGỌT" FontSize="15"></ComboBoxItem>
-                        <ComboBoxItem Content="BÁNH MÌ" FontSize="15"></ComboBoxItem>
-                        <ComboBoxItem Content="BÁNH THEO MÙA" FontSize="15"></ComboBoxItem>
-                        <ComboBoxItem Content="BÁNH KEM" FontSize="15"></ComboBoxItem>
-                        <ComboBoxItem Content="BÁNH ĐÓNG GÓI" FontSize="15"></ComboBoxItem>
-                        <ComboBoxItem Content="BÁNH KEM NHỎ" FontSize="15"></ComboBoxItem>
+                        <ComboBoxItem Content="ALL OF CAKES" FontSize="15"></ComboBoxItem>
+                        <ComboBoxItem Content="CAKE" FontSize="15"></ComboBoxItem>
+                        <ComboBoxItem Content="BREAD" FontSize="15"></ComboBoxItem>
+                        <ComboBoxItem Content="GIFT" FontSize="15"></ComboBoxItem>
+                        <ComboBoxItem Content="SNACK" FontSize="15"></ComboBoxItem>
                     </ComboBox>
                 </StackPanel>
             </Grid>

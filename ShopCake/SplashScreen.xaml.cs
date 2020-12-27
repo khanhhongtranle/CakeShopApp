@@ -27,6 +27,9 @@ namespace ShopCake
         {
             InitializeComponent();
             this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+
+            DBHelper dBHelper = new DBHelper();
+            dBHelper.createDatabase();
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)

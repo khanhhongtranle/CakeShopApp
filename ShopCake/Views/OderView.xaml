@@ -61,12 +61,12 @@
                                         <StackPanel>
                                             <WrapPanel>
                                                 <Border Cursor="Hand" Margin="-10,0,5,0">
-                                                    <Button x:Name="buttonDeleteProduct" Click="buttonDeleteProduct_Click" Height="36" Width="36" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF404040">
+                                                    <Button x:Name="buttonDeleteProduct"  Height="36" Width="36" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF404040">
                                                     </Button>
                                                 </Border>
                                                 <Border Height="100" Width="100" Margin="0,0,10,0">
                                                     <Border.Background>
-                                                        <ImageBrush ImageSource="{Binding ImagePath, Converter={StaticResource imagePathConverter}}" RenderOptions.BitmapScalingMode="HighQuality" Stretch="UniformToFill"/>
+                                                        <ImageBrush RenderOptions.BitmapScalingMode="HighQuality" Stretch="UniformToFill"/>
                                                     </Border.Background>
                                                 </Border>
                                                 <TextBlock Text="{Binding Name}" FontSize="20" Foreground="Black" TextWrapping="Wrap" Background="{x:Null}" VerticalAlignment="Center" TextAlignment="Justify" FontWeight="Bold"></TextBlock>
@@ -132,7 +132,7 @@
                             </Grid>
                         </Grid>
                     </Border>
-                    <Border DockPanel.Dock="Bottom" Height="54" MouseLeftButtonUp="payment" Cursor="Hand" BorderThickness="2" BorderBrush="#d26e4b" Background="#d26e4b" VerticalAlignment="Bottom" Margin="0,29.667,0,0">
+                    <Border DockPanel.Dock="Bottom" Height="54"  Cursor="Hand" BorderThickness="2" BorderBrush="#d26e4b" Background="#d26e4b" VerticalAlignment="Bottom" Margin="0,29.667,0,0">
                         <Label Padding="8" FontSize="20" Foreground="White" VerticalContentAlignment="Center" Background="{x:Null}" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center">
                             <Label.Content>
                                 <AccessText Text="ORDER"></AccessText>
