@@ -4,7 +4,7 @@ using System.Windows.Input;
 
 namespace ShopCake.Models
 {
-    class Cake
+    public class Cake
     {
         public Cake()
         {
@@ -22,6 +22,18 @@ namespace ShopCake.Models
         public int Kind { get; set; }
         public double Unit_Price { get; set; }
         public List<String> Images_List { get; set; }
+        private string _thumbnailPath;
+        public string ThumbnailPath
+        {
+            get
+            {
+                return Images_List[0];
+            }
+            set
+            {
+                _thumbnailPath = value;
+            }
+        }
 
         public void insertToDatabase(DBHelper dBHelper)
         {

@@ -28,15 +28,9 @@ namespace ShopCake
             this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
            
             _frame.Children.Clear();
-            _frame.Children.Add(new HomeView());
+            _frame.Children.Add(new ProductsMenuView());
         }
        
-        private void MenuHome_MouseUp(object sender, RoutedEventArgs e)
-        {
-            _frame.Children.Clear();
-            _frame.Children.Add(new HomeView());
-        }
-
         private void MenuCakesMenu_MouseUp(object sender, RoutedEventArgs e)
         {
             _frame.Children.Clear();
@@ -49,21 +43,15 @@ namespace ShopCake
             _frame.Children.Add(new CreateNewView());
         }
 
-        private void MenuOrder_MouseUp(object sender, RoutedEventArgs e)
-        {
-            _frame.Children.Clear();
-            _frame.Children.Add(new OderView());
-        }
-
         private void MenuReport_MouseUp(object sender, RoutedEventArgs e)
         {
 
         }
 
-        private void _cart(object sender, MouseButtonEventArgs e)
+        private void Cart(object sender, MouseButtonEventArgs e)
         {
             _frame.Children.Clear();
-           // _frame.Children.Add(new UserControlShopping());
+            _frame.Children.Add(new OderView());
         }
     }
 }

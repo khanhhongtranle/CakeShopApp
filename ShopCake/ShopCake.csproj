@@ -78,7 +78,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Helpers\ConvertImageHelper.cs" />
     <Compile Include="Helpers\DBHelper.cs" />
+    <Compile Include="Helpers\PagingHelper.cs" />
     <Compile Include="Helpers\StringHelper.cs" />
     <Compile Include="Models\AKindOfCake.cs" />
     <Compile Include="Models\Cake.cs" />
@@ -91,9 +93,6 @@
     </Compile>
     <Compile Include="Views\CreateNewView.xaml.cs">
       <DependentUpon>CreateNewView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\HomeView.xaml.cs">
-      <DependentUpon>HomeView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\OderView.xaml.cs">
       <DependentUpon>OderView.xaml</DependentUpon>
@@ -128,10 +127,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\CreateNewView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\HomeView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

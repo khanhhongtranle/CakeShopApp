@@ -17,7 +17,8 @@ public class DBHelper
         var cmd = new SQLiteCommand(this.conn);
         cmd.CommandText = @"CREATE TABLE IF NOT EXISTS cakes(
                             id TEXT PRIMARY KEY,
-                            name TEXT, description TEXT,
+                            name TEXT, 
+                            description TEXT,
                             date_entered DATETIME,
                             kindofcake_id int,
                             unit_price INTEGER)";

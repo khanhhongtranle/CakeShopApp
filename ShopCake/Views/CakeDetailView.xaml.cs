@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ShopCake.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,7 +21,7 @@ namespace ShopCake.Views
     /// </summary>
     public partial class CakeDetailView : UserControl
     {
-        public CakeDetailView()
+        public CakeDetailView(Cake item)
         {
             InitializeComponent();
         }

@@ -4,8 +4,12 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:ShopCake.Views"
+             xmlns:converter="clr-namespace:ShopCake.Helpers"
              mc:Ignorable="d" 
-             d:DesignHeight="650" d:DesignWidth="1280">
+             d:DesignHeight="650" d:DesignWidth="1280" Loaded="UserControl_Loaded">
+    <UserControl.Resources>
+        <converter:ConvertImageHelper x:Key="imagePathConverter"/>
+    </UserControl.Resources>
     <DockPanel Name="_frame">
         <Grid>
             <Grid.RowDefinitions>
@@ -14,23 +18,19 @@
             </Grid.RowDefinitions>
             <Grid Grid.Row="0" HorizontalAlignment="Left">
                 <StackPanel VerticalAlignment="Center" HorizontalAlignment="Left">
-                    <ComboBox Name="_nameComboBox" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" Foreground="#555" FontWeight="DemiBold" FontSize="18" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="20 0 0 0" Padding="4,4,4,4">
-                        <ComboBoxItem Content="ALL OF CAKES" FontSize="15"></ComboBoxItem>
-                        <ComboBoxItem Content="CAKE" FontSize="15"></ComboBoxItem>
-                        <ComboBoxItem Content="BREAD" FontSize="15"></ComboBoxItem>
-                        <ComboBoxItem Content="GIFT" FontSize="15"></ComboBoxItem>
-                        <ComboBoxItem Content="SNACK" FontSize="15"></ComboBoxItem>
+                    <ComboBox ItemsSource="{Binding}" 
+                        Name="comboBoxitemKind" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" Foreground="#555" FontWeight="DemiBold" FontSize="18" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="20 0 0 0" Padding="4,4,4,4">
                     </ComboBox>
                 </StackPanel>
             </Grid>
             <Grid Grid.Row="0" HorizontalAlignment="Right">
                 <StackPanel Name="_pagination" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
-                    <Image  Cursor="Hand" Source="../Assets/prev.png" RenderOptions.BitmapScalingMode="HighQuality" Width="40" HorizontalAlignment="Center" VerticalAlignment="Center"></Image>
-                    <Image Cursor="Hand" Source="../Assets/togo.png" RenderOptions.BitmapScalingMode="HighQuality" Width="40" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10,0,20,0"></Image>
+                    <Image MouseDown="Prev_Click"  Cursor="Hand" Source="../Assets/prev.png" RenderOptions.BitmapScalingMode="HighQuality" Width="40" HorizontalAlignment="Center" VerticalAlignment="Center"></Image>
+                    <Image MouseDown="Next_Click" Cursor="Hand" Source="../Assets/togo.png" RenderOptions.BitmapScalingMode="HighQuality" Width="40" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10,0,20,0"></Image>
                 </StackPanel>
             </Grid>
             <Grid Grid.Row="1">
-                <ListView Name="dataListview"  ScrollViewer.VerticalScrollBarVisibility="Hidden" Background="White" ScrollViewer.HorizontalScrollBarVisibility="Disabled" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch">
+                <ListView Name="dataListview" SelectionChanged="dataListview_SelectionChanged" ScrollViewer.VerticalScrollBarVisibility="Hidden" Background="White" ScrollViewer.HorizontalScrollBarVisibility="Disabled" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch">
                     <ListView.ItemsPanel>
                         <ItemsPanelTemplate>
                             <UniformGrid Columns="4" Rows="3" Margin="5 0 5 0"></UniformGrid>
@@ -42,7 +42,7 @@
                                 <Grid Height="250" DockPanel.Dock="Top">
                                     <Border>
                                         <Border.Background>
-                                            <ImageBrush RenderOptions.BitmapScalingMode="HighQuality" Stretch="UniformToFill"></ImageBrush>
+                                            <ImageBrush ImageSource="{Binding ThumbnailPath,  Converter={StaticResource imagePathConverter}}" RenderOptions.BitmapScalingMode="HighQuality" Stretch="UniformToFill"></ImageBrush>
                                         </Border.Background>
                                     </Border>
                                 </Grid>
@@ -52,10 +52,10 @@
                                             <AccessText TextWrapping="Wrap" Text="{Binding Name}"></AccessText>
                                         </Label.Content>
                                     </Label>
-                                    <TextBlock Text="{Binding Price}" FontSize="20" Foreground="Black" TextWrapping="Wrap" Background="{x:Null}" VerticalAlignment="Center" TextAlignment="Justify" FontWeight="DemiBold"> VNĐ</TextBlock>
+                                    <TextBlock Text="{Binding Unit_Price}" FontSize="20" Foreground="Black" TextWrapping="Wrap" Background="{x:Null}" VerticalAlignment="Center" TextAlignment="Justify" FontWeight="DemiBold">  VNĐ</TextBlock>
 
-                                    <Border Name="_order" Height="40" Width="120" Cursor="Hand" BorderThickness="2" BorderBrush="#555" Background="{Binding Background}" HorizontalAlignment="Left" Margin="0,20,0,0">
-                                        <Button Content="MUA HÀNG" FontWeight="Bold" FontSize="16">
+                                    <Border Name="_order" Height="40" Width="120" Cursor="Hand" BorderThickness="2" BorderBrush="#555" HorizontalAlignment="Left" Margin="0,20,0,0">
+                                        <Button Content="Add to cart" FontWeight="Bold" FontSize="16">
                                             <Button.Style>
                                                 <Style TargetType="{x:Type Button}">
                                                     <Setter Property="Background" Value="White"/>

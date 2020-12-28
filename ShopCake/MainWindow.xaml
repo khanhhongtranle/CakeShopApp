@@ -13,16 +13,8 @@
         <Grid Background="#efefef" Height="100" DockPanel.Dock="Top">
             <StackPanel Orientation="Horizontal" Height="100" Name="topBar" HorizontalAlignment="Right" Margin="0 0 250 0">
                 <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="15,0,0,0">
-                    <Image Source="Assets/home.png" Opacity="0.6" RenderOptions.BitmapScalingMode="HighQuality" Width="40" HorizontalAlignment="Center" VerticalAlignment="Center"></Image>
-                    <Label Name="MenuHome" MouseUp="MenuHome_MouseUp" Cursor="Hand" Content="HOME" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Foreground="#555" FontSize="18" VerticalAlignment="Center"/>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="15,0,0,0">
                     <Image Source="Assets/menu.png" Opacity="0.8" RenderOptions.BitmapScalingMode="HighQuality" Width="40" HorizontalAlignment="Center" VerticalAlignment="Center"></Image>
                     <Label Name="MenuCakesMenu" MouseUp="MenuCakesMenu_MouseUp" Cursor="Hand" Content="MENU" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Foreground="#555" FontSize="18" VerticalAlignment="Center"></Label>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="15,0,0,0">
-                    <Image Source="Assets/shopping-cart.png" Opacity="0.6" RenderOptions.BitmapScalingMode="HighQuality" Width="30" HorizontalAlignment="Center" VerticalAlignment="Center"></Image>
-                    <Label Name="MenuOrder" MouseUp="MenuOrder_MouseUp" Cursor="Hand" Content="ORDER" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Foreground="#555" FontSize="18" VerticalAlignment="Center"></Label>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="15,0,0,0">
                     <Image Source="Assets/add.png" Opacity="0.6" RenderOptions.BitmapScalingMode="HighQuality" Width="37" HorizontalAlignment="Center" VerticalAlignment="Center"></Image>
@@ -34,7 +26,7 @@
                 </StackPanel>
             </StackPanel>
             <Border Width="200" Height="50" Margin="0,0,25,0" BorderThickness="1.2" BorderBrush="#555" CornerRadius="15" HorizontalAlignment="Right">
-                <StackPanel MouseLeftButtonUp="_cart" Orientation="Horizontal" VerticalAlignment="Center" Margin="0,0,0,0">
+                <StackPanel MouseLeftButtonUp="Cart" Orientation="Horizontal" VerticalAlignment="Center" Margin="0,0,0,0">
                     <Label Cursor="Hand" Content="Giỏ hàng/0 VNĐ" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Foreground="#555" FontSize="18" Margin="7 0 0 0" VerticalAlignment="Center"/>
                     <Border Width="40" Margin="0,0,25,0">
                         <Grid>
@@ -45,7 +37,7 @@
                 </StackPanel>
             </Border>
             <StackPanel Orientation="Vertical" HorizontalAlignment="Left" VerticalAlignment="Center">
-                <Image x:Name="imgLogo" MouseUp="MenuHome_MouseUp" Cursor="Hand" Source="Assets/logo.png" RenderOptions.BitmapScalingMode="HighQuality" 
+                <Image x:Name="imgLogo" MouseUp="MenuCakesMenu_MouseUp" Cursor="Hand" Source="Assets/logo.png" RenderOptions.BitmapScalingMode="HighQuality" 
                        Width="80" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0 0 0 0" Height="130"/>
 
 
