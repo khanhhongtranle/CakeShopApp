@@ -209,7 +209,10 @@
   <ItemGroup>
     <Resource Include="Assets\cancel-red.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Assets\add-without-border.png" />
+    <Resource Include="Assets\dash.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

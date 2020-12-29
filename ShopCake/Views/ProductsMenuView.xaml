@@ -30,7 +30,7 @@
                 </StackPanel>
             </Grid>
             <Grid Grid.Row="1">
-                <ListView Name="dataListview" SelectionChanged="dataListview_SelectionChanged" ScrollViewer.VerticalScrollBarVisibility="Hidden" Background="White" ScrollViewer.HorizontalScrollBarVisibility="Disabled" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch">
+                <ListView Name="dataListview" Cursor="Hand" SelectionChanged="dataListview_SelectionChanged" ScrollViewer.VerticalScrollBarVisibility="Hidden" Background="White" ScrollViewer.HorizontalScrollBarVisibility="Disabled" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch">
                     <ListView.ItemsPanel>
                         <ItemsPanelTemplate>
                             <UniformGrid Columns="4" Rows="3" Margin="5 0 5 0"></UniformGrid>

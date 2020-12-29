@@ -4,23 +4,25 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:ShopCake.Views"
+             xmlns:converter="clr-namespace:ShopCake.Helpers"
              mc:Ignorable="d" 
-             d:DesignHeight="650" d:DesignWidth="1280">
+             d:DesignHeight="650" d:DesignWidth="1280" Loaded="UserControl_Loaded">
     <UserControl.Resources>
+        <converter:ConvertImageHelper x:Key="imagePathConverter"/>
     </UserControl.Resources>
-        <DockPanel Background="White" Name="_frame" LastChildFill="True">
+    <DockPanel Background="White" Name="_frame" LastChildFill="True">
             <Grid>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="600"/>
                     <ColumnDefinition/>
+                    <ColumnDefinition Width="600"/>
                 </Grid.ColumnDefinitions>
-                <Grid Grid.Column="0">
+                <Grid Grid.Column="1">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="3*"/>
                         <RowDefinition/>
                     </Grid.RowDefinitions>
                     <Grid Grid.Row="0" Margin="10">
-                        <Image  RenderOptions.BitmapScalingMode="HighQuality" Stretch="UniformToFill"></Image>
+                        <Image Source="{Binding ThumbnailPath,  Converter={StaticResource imagePathConverter}}" RenderOptions.BitmapScalingMode="HighQuality" Stretch="UniformToFill"></Image>
                     </Grid>
                     <Grid Grid.Row="1" Margin="5">
                         <ItemsControl Margin="5,0,0,0"  Name="PreviewPhoto">
@@ -61,50 +63,51 @@
                         </ItemsControl>
                     </Grid>
                 </Grid>
-                <Grid Grid.Column="1">
+                <Grid Grid.Column="0">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="45"/>
                         <RowDefinition Height="4*"/>
                     </Grid.RowDefinitions>
                     <Grid Grid.Row="0" Margin="5">
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Top">
-                            <Label Content="TRANG CHỦ /" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Foreground="#555" FontSize="18" VerticalAlignment="Center" HorizontalAlignment="Left"/>
-                            <Label Content="{Binding ProductType}" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Foreground="#555" FontSize="18" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                            <Label Content="Menu /" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Foreground="#555" FontSize="18" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                            <Label Name="KindLabel" Content="{Binding}" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Foreground="#555" FontSize="18" VerticalAlignment="Center" HorizontalAlignment="Left"/>
                         </StackPanel>
-                        <StackPanel Cursor="Hand" Name="_editProduct" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Top">
-                            <Label Content="CHỈNH SỬA THÔNG TIN" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Foreground="#555" FontSize="18" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                        <StackPanel Cursor="Hand" MouseDown="_editProduct_MouseDown" Name="_editProduct" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Top">
+                            <Label Content="Edit" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Foreground="#555" FontSize="18" VerticalAlignment="Center" HorizontalAlignment="Left"/>
                         </StackPanel>
                     </Grid>
                     <ScrollViewer VerticalScrollBarVisibility="Hidden" Grid.Row="1" Margin="5,5,10,5">
                         <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top">
                             <Label Content="{Binding Name}" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Foreground="#555" FontSize="32" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="2,20,0,0" FontWeight="Bold"/>
                             <WrapPanel Margin="6,6,0,0">
-                                <TextBlock Text="{Binding Price}" FontSize="27" Foreground="Black" TextWrapping="Wrap" Background="{x:Null}" VerticalAlignment="Center" TextAlignment="Justify" FontWeight="Bold"></TextBlock>
+                                <TextBlock Text="{Binding Unit_Price}" FontSize="27" Foreground="Black" TextWrapping="Wrap" Background="{x:Null}" VerticalAlignment="Center" TextAlignment="Justify" FontWeight="Bold"></TextBlock>
                                 <TextBlock Text=" VNĐ" FontSize="22" Foreground="Black" TextWrapping="Wrap" Background="{x:Null}" VerticalAlignment="Center" TextAlignment="Justify" FontWeight="Bold"></TextBlock>
                             </WrapPanel>
                             <Border Background="#FF004400" Height="5" Width="52" HorizontalAlignment="Left" Margin="6,10,0,0"></Border>
                             <StackPanel Margin="10,26,6,0">
-                                <TextBlock Text="MÔ TẢ" FontSize="27" Foreground="Black" TextWrapping="Wrap" Background="{x:Null}" VerticalAlignment="Center" TextAlignment="Justify"/>
                                 <TextBlock TextWrapping="Wrap" Text="{Binding Description}" FontSize="22" Foreground="#555" VerticalAlignment="Center" TextAlignment="Justify"></TextBlock>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" Margin="6,16,0,50">
-                                <Border Height="50" Name="Minus" Cursor="Hand" Width="20" Margin="0,0,5,0" HorizontalAlignment="Center" VerticalAlignment="Center" Background="White">
+                                <Border Height="50" MouseDown="Minus_MouseDown" BorderThickness="1" BorderBrush="Black" Name="Minus" Cursor="Hand" Width="20" Margin="0,0,5,0" HorizontalAlignment="Center" VerticalAlignment="Center" Background="White">
+                                    <Image Source="../Assets/add-without-border.png"></Image>
                                 </Border>
                                 <Border Height="50" BorderBrush="#555" BorderThickness="2" Margin="0,0,5,0" Background="White">
                                     <TextBox
-                                            Name="_number"
+                                            Name="_quantity"
                                             Text="1"
                                             FontSize="20"
                                             Width="50"
                                             Height="50"              
                                         VerticalContentAlignment="Center" HorizontalContentAlignment="Center" TextAlignment="Center" Margin="0"/>
                                 </Border>
-                                <Border Height="50" Name="Plus"  Cursor="Hand" Width="20" Margin="0,0,20,0" Background="White">
+                                <Border Height="50" MouseDown="Plus_MouseDown" Name="Plus" BorderBrush="Black" BorderThickness="1" Cursor="Hand" Width="20" Margin="0,0,20,0" Background="White">
+                                    <Image Source="../Assets/add-without-border.png"></Image>
                                 </Border>
-                                <Border  Cursor="Hand" BorderThickness="2" BorderBrush="#d26e4b" Background="#d26e4b" HorizontalAlignment="Left">
+                            <Border  Cursor="Hand" BorderThickness="2" BorderBrush="#42c2f5" Background="#42c2f5" HorizontalAlignment="Left">
                                     <Label Padding="8" FontSize="20" Foreground="White" VerticalContentAlignment="Center" Background="{x:Null}" FontWeight="Bold">
                                         <Label.Content>
-                                            <AccessText Text="MUA HÀNG"></AccessText>
+                                            <AccessText Text="ADD TO CART"></AccessText>
                                         </Label.Content>
                                     </Label>
                                 </Border>
