@@ -48,6 +48,7 @@ namespace ShopCake.Views
             comboBoxitemKind.ItemsSource = kindsList;
             comboBoxitemKind.DisplayMemberPath = "Name";
             comboBoxitemKind.SelectedValuePath = "Id";
+            comboBoxitemKind.SelectedValue = "0";
         }
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)

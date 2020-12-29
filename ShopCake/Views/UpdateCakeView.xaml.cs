@@ -156,7 +156,8 @@ namespace ShopCake.Views
 
         private void imgCancel_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            this.newCake = this.currentCake;
+            _addCakes.Children.Clear();
+            _addCakes.Children.Add(new ProductsMenuView());
         }
     }
 }
