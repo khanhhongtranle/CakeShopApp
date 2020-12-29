@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace ShopCake.Models
 {
-    class Order
+    public class Order
     {
         public Order()
         {
-
+            List_Order = new List<OrderCake>();
         }
 
         public string OrderID { get; set; }
@@ -19,16 +19,26 @@ namespace ShopCake.Models
         public double Total { get; set; }
     }
 
-    class OrderCake
+    public class OrderCake
     {
         public OrderCake()
         {
 
         }
 
+        public OrderCake(string _id, string _name, int _quantity, double _price, double _amount)
+        {
+            Id = _id;
+            CakeName = _name;
+            Quantity = _quantity;
+            Price = _price;
+            Amount = _amount;
+        }
+
+        public string Id { get; set; }
         public string CakeName { get; set; }
-        public int Number_Of_Cake { get; set; }
-        public double Sold_Price { get; set; }
-        public double Money { get; set; }
+        public int Quantity { get; set; }
+        public double Price { get; set; }
+        public double Amount { get; set; }
     }
 }

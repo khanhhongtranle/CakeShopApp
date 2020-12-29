@@ -75,5 +75,11 @@ namespace ShopCake.Views
             _frame.Children.Clear();
             _frame.Children.Add(new UpdateCakeView(this.cake));
         }
+
+        private void Add_To_Cart_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            ApplicationContext.Order.List_Order.Add(new OrderCake(cake.Id, cake.Name, quantity, cake.Unit_Price, quantity * cake.Unit_Price));
+            MessageBoxResult result = MessageBox.Show("Added to cart", "Notification");
+        }
     }
 }

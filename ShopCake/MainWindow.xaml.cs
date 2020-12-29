@@ -1,4 +1,5 @@
-﻿using ShopCake.Views;
+﻿using ShopCake.Models;
+using ShopCake.Views;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,8 +20,22 @@ namespace ShopCake
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
+    /// 
+    public static class ApplicationContext
+    {
+        private static Order _order = new Order();
+        public static Order Order
+        {
+            get { return _order; }
+            set { _order = value; }
+        }
+
+    }
+
     public partial class MainWindow : Window
     {
+        private int totalCakes = 0;
+        private Order order = ApplicationContext.Order;
 
         public MainWindow()
         {

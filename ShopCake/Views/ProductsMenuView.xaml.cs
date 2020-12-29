@@ -36,7 +36,10 @@ namespace ShopCake.Views
             cakesList = new ObservableCollection<Cake>();
             kindsList = new ObservableCollection<AKindOfCake>();
             pagingHelper = new PagingHelper();
+        }
 
+        private void UserControl_Loaded(object sender, RoutedEventArgs e)
+        {
             //read kind of cake from database
             var kindsRaw = dBHelper.query("select * from kindofcakes", true);
             kindsList.Add(new AKindOfCake("0", "All of kinds"));
@@ -51,10 +54,56 @@ namespace ShopCake.Views
             comboBoxitemKind.SelectedValue = "0";
         }
 
-        private void UserControl_Loaded(object sender, RoutedEventArgs e)
+        private void Next_Click(object sender, MouseButtonEventArgs e)
         {
+            if (pagingHelper.CurrentPage < pagingHelper.TotalPages)
+            {
+                pagingHelper.CurrentPage++;
+                dataListview.ItemsSource =
+                cakesList
+                    .Skip((pagingHelper.CurrentPage - 1) * pagingHelper.ItemsPerPage)
+                    .Take(pagingHelper.ItemsPerPage);
+            }
+        }
+
+        private void Prev_Click(object sender, MouseButtonEventArgs e)
+        {
+            if (pagingHelper.CurrentPage <= pagingHelper.TotalPages)
+            {
+                pagingHelper.CurrentPage--;
+                dataListview.ItemsSource =
+                cakesList
+                    .Skip((pagingHelper.CurrentPage - 1) * pagingHelper.ItemsPerPage)
+                    .Take(pagingHelper.ItemsPerPage);
+                if (pagingHelper.CurrentPage <= 1)
+                {
+                    pagingHelper.CurrentPage = 1;
+                }
+            }
+        }
+
+        private void dataListview_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var item = (sender as ListView).SelectedItem as Cake;
+            int index = dataListview.Items.IndexOf(item) + ((pagingHelper.CurrentPage - 1) * pagingHelper.ItemsPerPage);
+            if (item != null)
+            {
+                _frame.Children.Clear();
+                _frame.Children.Add(new CakeDetailView(item));
+            }
+        }
+
+        private void comboBoxitemKind_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            cakesList.Clear();
+            AKindOfCake typeItem = (AKindOfCake)comboBoxitemKind.SelectedItem;
             //read all of cakes from database
-            var cakesListRaw = dBHelper.query("select * from cakes", true);
+            var query = $"select * from cakes where kindofcake_id = {typeItem.Id}";
+            if (typeItem.Id == "0")
+            {
+                query = "select * from cakes";
+            }
+            var cakesListRaw = dBHelper.query(query, true);
             foreach (var cakeRaw in cakesListRaw)
             {
                 Cake _cake = new Cake();
@@ -96,45 +145,6 @@ namespace ShopCake.Views
             });
 
             thread.Start();
-        }
-
-        private void Next_Click(object sender, MouseButtonEventArgs e)
-        {
-            if (pagingHelper.CurrentPage < pagingHelper.TotalPages)
-            {
-                pagingHelper.CurrentPage++;
-                dataListview.ItemsSource =
-                cakesList
-                    .Skip((pagingHelper.CurrentPage - 1) * pagingHelper.ItemsPerPage)
-                    .Take(pagingHelper.ItemsPerPage);
-            }
-        }
-
-        private void Prev_Click(object sender, MouseButtonEventArgs e)
-        {
-            if (pagingHelper.CurrentPage <= pagingHelper.TotalPages)
-            {
-                pagingHelper.CurrentPage--;
-                dataListview.ItemsSource =
-                cakesList
-                    .Skip((pagingHelper.CurrentPage - 1) * pagingHelper.ItemsPerPage)
-                    .Take(pagingHelper.ItemsPerPage);
-                if (pagingHelper.CurrentPage <= 1)
-                {
-                    pagingHelper.CurrentPage = 1;
-                }
-            }
-        }
-
-        private void dataListview_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            var item = (sender as ListView).SelectedItem as Cake;
-            int index = dataListview.Items.IndexOf(item) + ((pagingHelper.CurrentPage - 1) * pagingHelper.ItemsPerPage);
-            if (item != null)
-            {
-                _frame.Children.Clear();
-                _frame.Children.Add(new CakeDetailView(item));
-            }
         }
     }
 }

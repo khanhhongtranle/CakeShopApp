@@ -90,7 +90,7 @@
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" Margin="6,16,0,50">
                                 <Border Height="50" MouseDown="Minus_MouseDown" BorderThickness="1" BorderBrush="Black" Name="Minus" Cursor="Hand" Width="20" Margin="0,0,5,0" HorizontalAlignment="Center" VerticalAlignment="Center" Background="White">
-                                    <Image Source="../Assets/add-without-border.png"></Image>
+                                    <Image Source="../Assets/dash.png"></Image>
                                 </Border>
                                 <Border Height="50" BorderBrush="#555" BorderThickness="2" Margin="0,0,5,0" Background="White">
                                     <TextBox
@@ -104,7 +104,7 @@
                                 <Border Height="50" MouseDown="Plus_MouseDown" Name="Plus" BorderBrush="Black" BorderThickness="1" Cursor="Hand" Width="20" Margin="0,0,20,0" Background="White">
                                     <Image Source="../Assets/add-without-border.png"></Image>
                                 </Border>
-                            <Border  Cursor="Hand" BorderThickness="2" BorderBrush="#42c2f5" Background="#42c2f5" HorizontalAlignment="Left">
+                            <Border MouseDown="Add_To_Cart_MouseDown" Cursor="Hand" BorderThickness="2" BorderBrush="#42c2f5" Background="#42c2f5" HorizontalAlignment="Left">
                                     <Label Padding="8" FontSize="20" Foreground="White" VerticalContentAlignment="Center" Background="{x:Null}" FontWeight="Bold">
                                         <Label.Content>
                                             <AccessText Text="ADD TO CART"></AccessText>

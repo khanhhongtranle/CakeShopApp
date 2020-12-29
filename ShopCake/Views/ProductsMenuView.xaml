@@ -18,7 +18,7 @@
             </Grid.RowDefinitions>
             <Grid Grid.Row="0" HorizontalAlignment="Left">
                 <StackPanel VerticalAlignment="Center" HorizontalAlignment="Left">
-                    <ComboBox ItemsSource="{Binding}" 
+                    <ComboBox ItemsSource="{Binding}" SelectionChanged="comboBoxitemKind_SelectionChanged"
                         Name="comboBoxitemKind" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" Foreground="#555" FontWeight="DemiBold" FontSize="18" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="20 0 0 0" Padding="4,4,4,4">
                     </ComboBox>
                 </StackPanel>
@@ -53,44 +53,6 @@
                                         </Label.Content>
                                     </Label>
                                     <TextBlock Text="{Binding Unit_Price}" FontSize="20" Foreground="Black" TextWrapping="Wrap" Background="{x:Null}" VerticalAlignment="Center" TextAlignment="Justify" FontWeight="DemiBold">  VNĐ</TextBlock>
-
-                                    <Border Name="_order" Height="40" Width="120" Cursor="Hand" BorderThickness="2" BorderBrush="#555" HorizontalAlignment="Left" Margin="0,20,0,0">
-                                        <Button Content="Add to cart" FontWeight="Bold" FontSize="16">
-                                            <Button.Style>
-                                                <Style TargetType="{x:Type Button}">
-                                                    <Setter Property="Background" Value="White"/>
-                                                    <Setter Property="Foreground">
-                                                        <Setter.Value>
-                                                            <SolidColorBrush Color="#815D37"/>
-                                                        </Setter.Value>
-                                                    </Setter>
-                                                    <Setter Property="Template">
-                                                        <Setter.Value>
-                                                            <ControlTemplate TargetType="{x:Type Button}">
-                                                                <Border Background="{TemplateBinding Background}" BorderThickness="1">
-                                                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                                                </Border>
-                                                            </ControlTemplate>
-                                                        </Setter.Value>
-                                                    </Setter>
-                                                    <Style.Triggers>
-                                                        <Trigger Property="IsMouseOver" Value="True">
-                                                            <Setter Property="Background">
-                                                                <Setter.Value>
-                                                                    <SolidColorBrush Color="#555"/>
-                                                                </Setter.Value>
-                                                            </Setter>
-                                                            <Setter Property="Foreground">
-                                                                <Setter.Value>
-                                                                    <SolidColorBrush Color="White"/>
-                                                                </Setter.Value>
-                                                            </Setter>
-                                                        </Trigger>
-                                                    </Style.Triggers>
-                                                </Style>
-                                            </Button.Style>
-                                        </Button>
-                                    </Border>
                                 </StackPanel>
                             </DockPanel>
                         </DataTemplate>
