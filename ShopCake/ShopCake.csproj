@@ -80,6 +80,7 @@
     </ApplicationDefinition>
     <Compile Include="Helpers\ConvertImageHelper.cs" />
     <Compile Include="Helpers\DBHelper.cs" />
+    <Compile Include="Helpers\FileHelper.cs" />
     <Compile Include="Helpers\PagingHelper.cs" />
     <Compile Include="Helpers\StringHelper.cs" />
     <Compile Include="Models\AKindOfCake.cs" />

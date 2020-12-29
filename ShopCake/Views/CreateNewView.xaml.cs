@@ -70,11 +70,11 @@ namespace ShopCake.Views
         {
             //check fields
             AKindOfCake typeItem = (AKindOfCake)comboBoxitemKind.SelectedItem;
-            /*if (cake.Name == "" || cake.Description == "" || typeItem == null)
+            if (textBoxName.Text == "" || textBoxDescription.Text == "" || textBoxPrice.Text == "" || typeItem == null)
             {
                 MessageBoxResult resultFailed = MessageBox.Show("Fields must be filled out", "Notification");
                 return;
-            }*/
+            }
             //fields is filled out
             MessageBoxResult resultComfirm = MessageBox.Show("Do you really want to create new cake?", "Notification", MessageBoxButton.OKCancel);
             if (resultComfirm == MessageBoxResult.OK) {
@@ -109,7 +109,7 @@ namespace ShopCake.Views
                     string reversedFileName = StringHelper.CutStringTo(reversedImage, '\\');
                     string fileName = StringHelper.Reverse(reversedFileName);
                     string destFile = System.IO.Path.Combine(pathImagesFolder, fileName);
-                    File.Copy(image, destFile, true);
+                    destFile = FileHelper.Copy(image, destFile);
                     imgListToSave.Add(destFile);
                 }
                 cake.Images_List = imgListToSave;

@@ -13,6 +13,7 @@ namespace ShopCake.Models
             this.Unit_Price = 0;
             this.Entered_Date = "";
             this.Images_List = new List<string>();
+            this.Other_Image_List = new List<string>();
         }
 
         public string Id { get; set; }
@@ -34,14 +35,15 @@ namespace ShopCake.Models
                 _thumbnailPath = value;
             }
         }
+        public List<String> Other_Image_List { set; get; }
 
         public void insertToDatabase(DBHelper dBHelper)
         {
             //insert into cakes table 
             //and insert into images table, cake_img table
 
-            dBHelper.query("insert into cakes(id, name, date_entered, kindofcake_id, unit_price) " +
-                $"values('{this.Entered_Date}', '{this.Name}', '{this.Entered_Date}', {this.Kind}, '{this.Unit_Price}')");
+            dBHelper.query("insert into cakes(id, name, date_entered, kindofcake_id, unit_price, description) " +
+                $"values('{this.Entered_Date}', '{this.Name}', '{this.Entered_Date}', {this.Kind}, '{this.Unit_Price}', '{this.Description}')");
 
             foreach(var img in this.Images_List)
             {
@@ -50,6 +52,27 @@ namespace ShopCake.Models
                                 $"values('{img_id}', '{img}')");
                 dBHelper.query("insert into cake_img(cake_id, img_id)" +
                                 $"values('{this.Entered_Date}', '{img_id}')");
+            }
+        }
+
+        public void update(DBHelper dBHelper)
+        {
+            //update cakes
+            dBHelper.query($"update cakes set name = '{this.Name}', kindofcake_id = '{this.Kind}', description = '{this.Description}', unit_price = '{this.Unit_Price}' where id = '{this.Id}'");
+
+            //delete cake_img, img where cake_id = this.Id
+            dBHelper.query($"delete from cake_img where cake_id = '{this.Id}'");
+            foreach(var img in this.Images_List)
+            {
+                //delete old images
+                dBHelper.query($"delete from images where link = '{img}'");
+
+                //insert new cake_img, img
+                var img_id = this.Name + img;
+                dBHelper.query("insert into images(id, link)" +
+                                $"values('{img_id}', '{img}')");
+                dBHelper.query("insert into cake_img(cake_id, img_id)" +
+                                $"values('{this.Id}', '{img_id}')");
             }
         }
     }

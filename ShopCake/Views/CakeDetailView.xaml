@@ -25,7 +25,7 @@
                         <Image Source="{Binding ThumbnailPath,  Converter={StaticResource imagePathConverter}}" RenderOptions.BitmapScalingMode="HighQuality" Stretch="UniformToFill"></Image>
                     </Grid>
                     <Grid Grid.Row="1" Margin="5">
-                        <ItemsControl Margin="5,0,0,0"  Name="PreviewPhoto">
+                    <ItemsControl Margin="5,0,0,0" Name="PreviewPhoto">
                             <ItemsControl.Template>
                                 <ControlTemplate TargetType="ItemsControl">
                                     <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled">
@@ -40,7 +40,7 @@
                             </ItemsControl.ItemsPanel>
                             <ItemsControl.ItemTemplate>
                                 <DataTemplate>
-                                    <ItemsControl Cursor="Hand" >
+                                <ItemsControl Cursor="Hand" ItemsSource="{Binding Other_Image_List}">
                                         <ItemsControl.ItemsPanel>
                                             <ItemsPanelTemplate>
                                                 <WrapPanel Orientation="Horizontal"></WrapPanel>
@@ -51,7 +51,7 @@
                                                 <WrapPanel>
                                                     <Border Width="140" Height="140" Margin="0,0,5,0">
                                                         <Border.Background>
-                                                            <ImageBrush Stretch="UniformToFill"  RenderOptions.BitmapScalingMode="HighQuality"/>
+                                                        <ImageBrush Stretch="UniformToFill" ImageSource="{Binding}" RenderOptions.BitmapScalingMode="HighQuality"/>
                                                         </Border.Background>
                                                     </Border>
                                                 </WrapPanel>

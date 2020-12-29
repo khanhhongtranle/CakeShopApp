@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:ShopCake.Views"
              mc:Ignorable="d" 
-             d:DesignHeight="650" d:DesignWidth="1280">
+             d:DesignHeight="650" d:DesignWidth="1280" Loaded="UserControl_Loaded">
     <DockPanel Background="White" x:Name="_addCakes" LastChildFill="True">
         <Grid DockPanel.Dock="Top">
             <WrapPanel Name="Top" Height="60" Margin="20,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Top">
@@ -13,8 +13,8 @@
                 <Label Content="UPDATE PRODUCT"  Height="60" FontSize="30" VerticalContentAlignment="Center" HorizontalAlignment="Left" Foreground="#555"/>
             </WrapPanel>
             <WrapPanel HorizontalAlignment="Right">
-                <Image Name="imgSave" Source="../Assets/save.ico" Cursor="Hand" Width="50" RenderOptions.BitmapScalingMode="HighQuality" Stretch="UniformToFill" Height="50" Margin="0 10 15 0"></Image>
-                <Image Name="imgCancel" Source="../Assets/cancel-red.png" Cursor="Hand" Width="45" RenderOptions.BitmapScalingMode="HighQuality" Stretch="UniformToFill" Height="40" Margin="0 10 15 0"></Image>
+                <Image Name="imgSave" MouseDown="imgSave_MouseDown" Source="../Assets/save.ico" Cursor="Hand" Width="50" RenderOptions.BitmapScalingMode="HighQuality" Stretch="UniformToFill" Height="50" Margin="0 10 15 0"></Image>
+                <Image Name="imgCancel" MouseDown="imgCancel_MouseDown" Source="../Assets/cancel-red.png" Cursor="Hand" Width="45" RenderOptions.BitmapScalingMode="HighQuality" Stretch="UniformToFill" Height="40" Margin="0 10 15 0"></Image>
             </WrapPanel>
         </Grid>
         <Grid>
@@ -35,6 +35,7 @@
                         Name="textBoxName"
                         FontSize="25"
                         BorderThickness="0" Margin="8.667,0,9.333,0"
+                        Text="{Binding Name}"
                         />
                     </Border>
                 </StackPanel>
@@ -47,34 +48,17 @@
                         Name="textBoxPrice"
                         FontSize="25" Padding="5"
                         BorderThickness="0" Margin="8.667,0,9.333,0"
+                        Text="{Binding Unit_Price}"
                         />
                     </Border>
                 </StackPanel>
             </Grid>
             <Grid Grid.Column="0" Grid.Row="1" Margin="20,20,10,20">
                 <StackPanel Margin="0,0,0,-25">
-                    <Label FontSize="17">Type</Label>
+                    <Label FontSize="17">Kind</Label>
                     <Border BorderThickness="1" BorderBrush="#5D4037" CornerRadius="5">
-                        <ComboBox Name="comboBoxitemType"
-                         FontSize="25" HorizontalAlignment="Right" VerticalAlignment="Center" DockPanel.Dock="Right" Margin="0,0,15,0" Height="50">
-                            <ComboBoxItem FontSize="17">
-                                Bánh Kem
-                            </ComboBoxItem >
-                            <ComboBoxItem FontSize="17">
-                                Bánh Ngọt
-                            </ComboBoxItem>
-                            <ComboBoxItem FontSize="17">
-                                Bánh Kem Nhỏ
-                            </ComboBoxItem>
-                            <ComboBoxItem FontSize="17">
-                                Bánh Mì
-                            </ComboBoxItem>
-                            <ComboBoxItem FontSize="17">
-                                Bánh Theo Mùa
-                            </ComboBoxItem>
-                            <ComboBoxItem FontSize="17">
-                                Bánh Đóng Gói
-                            </ComboBoxItem>
+                        <ComboBox Name="comboBoxitemKind"
+                         FontSize="25" HorizontalAlignment="Right" VerticalAlignment="Center" DockPanel.Dock="Right" Margin="0,0,15.333,0" Height="50" Width="584">
                         </ComboBox>
                     </Border>
                 </StackPanel>
@@ -89,6 +73,7 @@
                         BorderThickness="0"
                         TextWrapping="Wrap"
                         AcceptsReturn="True" Height="315" Margin="9,0"
+                        Text="{Binding Description}"
                         />
                     </Border>
                 </StackPanel>
@@ -98,7 +83,7 @@
                     <RowDefinition Height="80"></RowDefinition>
                     <RowDefinition></RowDefinition>
                 </Grid.RowDefinitions>
-                <Border Grid.Row="0" Margin="0,10,0,0" BorderThickness="1" Background="#FF8998AC" BorderBrush="#5D4037" CornerRadius="5">
+                <Border MouseDown="Upload_Image_MouseDown" Grid.Row="0" Margin="0,10,0,0" BorderThickness="1" Background="#FF8998AC" BorderBrush="#5D4037" CornerRadius="5">
                     <Button Height="70" x:Name="ChooseImg" BorderBrush="{x:Null}" Background="{x:Null}" Foreground="#FF2B2B2B" FontSize="14" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch" HorizontalAlignment="Center" VerticalAlignment="Center">
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
                             <Label Content="Upload picture(s)" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Foreground="White" FontSize="25" VerticalAlignment="Center" FontFamily="Arial"/>
@@ -107,7 +92,7 @@
                 </Border>
 
                 <Border Grid.Row="1" Margin="0,10,0,0" BorderThickness="1" BorderBrush="#5D4037" CornerRadius="5">
-                    <ListView Name="Img" ScrollViewer.VerticalScrollBarVisibility ="Hidden" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                    <ListView Name="Images" ScrollViewer.VerticalScrollBarVisibility ="Hidden" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
                         <ListView.ItemsPanel>
                             <ItemsPanelTemplate>
                                 <WrapPanel/>
@@ -116,7 +101,7 @@
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <StackPanel>
-                                    <Border Height="199" Width="199" BorderThickness="1">
+                                    <Border MouseDown="Remove_Image_MouseDown" Height="199" Width="199" BorderThickness="1">
                                         <Border.Background>
                                             <ImageBrush ImageSource="{Binding}" RenderOptions.BitmapScalingMode="HighQuality" Stretch="UniformToFill"></ImageBrush>
                                         </Border.Background>
