@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -34,14 +35,14 @@ namespace ShopCake
 
     public partial class MainWindow : Window
     {
-        private int totalCakes = 0;
-        private Order order = ApplicationContext.Order;
+        public Order order;
 
         public MainWindow()
         {
             InitializeComponent();
             this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
-           
+            order = ApplicationContext.Order;
+            this.DataContext = order;
             _frame.Children.Clear();
             _frame.Children.Add(new ProductsMenuView());
         }

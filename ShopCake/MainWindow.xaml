@@ -4,11 +4,10 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ShopCake"
+        xmlns:converter="clr-namespace:ShopCake.Helpers"
         mc:Ignorable="d"
         Title="Cake Shop" Height="650" Width="1280">
-    <Window.Resources>
-        
-    </Window.Resources>
+   
     <DockPanel Name="_mainWindow" LastChildFill="True">
         <Grid Background="#efefef" Height="100" DockPanel.Dock="Top">
             <StackPanel Orientation="Horizontal" Height="100" Name="topBar" HorizontalAlignment="Right" Margin="0 0 250 0">
@@ -27,11 +26,11 @@
             </StackPanel>
             <Border Width="200" Height="50" Margin="0,0,25,0" BorderThickness="1.2" BorderBrush="#555" CornerRadius="15" HorizontalAlignment="Right">
                 <StackPanel MouseLeftButtonUp="Cart" Orientation="Horizontal" VerticalAlignment="Center" Margin="0,0,0,0">
-                    <Label Cursor="Hand" Content="Giỏ hàng/0 VNĐ" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Foreground="#555" FontSize="18" Margin="7 0 0 0" VerticalAlignment="Center"/>
+                    <Label Cursor="Hand" Content="Cart /0 VNĐ" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Foreground="#555" FontSize="18" Margin="7 0 0 0" VerticalAlignment="Center"/>
                     <Border Width="40" Margin="0,0,25,0">
                         <Grid>
                             <Image Source="Assets/shopping-cart.png" Opacity="0.6" RenderOptions.BitmapScalingMode="HighQuality" Width="40" HorizontalAlignment="Center" VerticalAlignment="Center"></Image>
-                            <Label Name="Total" Cursor="Hand" Content="0" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Foreground="#815D37" FontSize="12" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10,2,0,0"/>
+                            <Label Name="Total" Cursor="Hand" Content="{Binding Total}" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Foreground="#815D37" FontSize="12" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10,2,0,0"/>
                         </Grid>
                     </Border>
                 </StackPanel>

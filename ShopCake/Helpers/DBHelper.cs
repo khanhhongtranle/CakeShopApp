@@ -82,5 +82,8 @@ public class DBHelper
         conn.Close();
     }
 
-     
+    public void close()
+    {
+        conn.Close();
+    } 
 }

@@ -5,6 +5,7 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -79,6 +80,7 @@ namespace ShopCake.Views
         private void Add_To_Cart_MouseDown(object sender, MouseButtonEventArgs e)
         {
             ApplicationContext.Order.List_Order.Add(new OrderCake(cake.Id, cake.Name, quantity, cake.Unit_Price, quantity * cake.Unit_Price));
+           
             MessageBoxResult result = MessageBox.Show("Added to cart", "Notification");
         }
     }

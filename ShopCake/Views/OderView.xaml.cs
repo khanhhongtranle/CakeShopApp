@@ -1,7 +1,10 @@
-﻿using System;
+﻿using ShopCake.Models;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -20,9 +23,58 @@ namespace ShopCake.Views
     /// </summary>
     public partial class OderView : UserControl
     {
+        private Order order;
+        private ObservableCollection<OrderCake> OrderCakeList;
+
         public OderView()
         {
             InitializeComponent();
+            order = ApplicationContext.Order;
+            OrderCakeList = new ObservableCollection<OrderCake>();
         }
+
+        private void UserControl_Loaded(object sender, RoutedEventArgs e)
+        {
+            foreach(var o_c in order.List_Order)
+            {
+                OrderCakeList.Add(o_c);
+            }
+            dataListview.ItemsSource = OrderCakeList;
+            _quanlity.Content = order.getNumberItems();
+            _total.Content = order.Total;
+            DateTime localDate = DateTime.Now;
+            _date.Content = localDate;
+        }
+
+        private void Order_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            MessageBoxResult resultComfirm = MessageBox.Show("Are you sure to complete this order?", "Notification", MessageBoxButton.OKCancel);
+            if (resultComfirm == MessageBoxResult.OK)
+            {
+                //save this order
+                DBHelper dBHelper = new DBHelper();
+                order.insert(dBHelper);
+                dBHelper.close();
+                MessageBoxResult successComfirm = MessageBox.Show("This order has completed yet.", "Notification");
+
+            }
+            else
+            {
+                //to do nothing
+            }
+        }
+
+
+        private void buttonDeleteProduct_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            var img = (Image)e.OriginalSource;
+            var cake = (OrderCake) img.DataContext;
+            order.deleteOrderItem(cake.Id);
+            OrderCakeList.Remove(cake);
+            dataListview.ItemsSource = OrderCakeList;
+            _quanlity.Content = order.getNumberItems();
+            _total.Content = order.Total;
+        }
+
     }
 }
