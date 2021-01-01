@@ -114,7 +114,7 @@ namespace ShopCake.Views
                 }
                 cake.Images_List = imgListToSave;
                 //insert to database
-                cake.insertToDatabase(dBHelper);
+                cake.insertToDatabase();
 
                 MessageBoxResult resultSuccess = MessageBox.Show("Created successfully", "Notification");
 

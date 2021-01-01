@@ -32,7 +32,7 @@ namespace ShopCake.Views
         public ProductsMenuView()
         {
             InitializeComponent();
-            dBHelper = new DBHelper();
+            dBHelper = ApplicationContext.DBHelper;
             cakesList = new ObservableCollection<Cake>();
             kindsList = new ObservableCollection<AKindOfCake>();
             pagingHelper = new PagingHelper();

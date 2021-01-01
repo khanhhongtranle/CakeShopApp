@@ -16,7 +16,7 @@ namespace ShopCake.Helpers
 
         public static string Copy(string source, string target)
         {
-            string returnName = "";
+            string returnName = target;
 
             if (!File.Exists(target))
                 File.Copy(source, target);

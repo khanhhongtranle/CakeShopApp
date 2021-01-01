@@ -3,12 +3,32 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:ShopCake"
+        xmlns:local="clr-namespace:ShopCake"      
+        xmlns:converter="clr-namespace:ShopCake.Helpers"
         mc:Ignorable="d"
         Title="SplashScreen" Height="450" Width="750" Loaded="Window_Loaded" ResizeMode="NoResize" WindowState="Normal" WindowStyle="None" AllowsTransparency="True">
+    <Window.Resources>
+        <converter:ConvertImageHelper x:Key="imagePathConverter"/>
+    </Window.Resources>
     <Canvas>
+        <DockPanel LastChildFill="True" HorizontalAlignment="Center" Margin="230,10,10,230">
+            <Grid Height="250" DockPanel.Dock="Top">
+                <Border>
+                    <Image x:Name="_image" RenderOptions.BitmapScalingMode="HighQuality" Stretch="UniformToFill"></Image>
+                </Border>
+            </Grid>
+            <StackPanel DockPanel.Dock="Bottom">
+                <Label Padding="0,5" FontSize="20" Foreground="#555" VerticalContentAlignment="Center" Background="{x:Null}" FontWeight="Bold">
+                    <Label.Content>
+                        <AccessText TextWrapping="Wrap" x:Name="_name" ></AccessText>
+                    </Label.Content>
+                </Label>
+                <TextBlock x:Name="_des" FontSize="20" Foreground="Black" TextWrapping="Wrap" Background="{x:Null}" VerticalAlignment="Center" TextAlignment="Justify" FontWeight="DemiBold"></TextBlock>
+            </StackPanel>
+        </DockPanel>
+
         <Border Background="White" Panel.ZIndex="99" Width="270" Height="40" CornerRadius="7" Canvas.Left="251" Canvas.Top="325" >
-            <CheckBox FontSize="16" Margin="10,0,10,0" Padding="5" x:Name="chbMain" Foreground="Black" Panel.ZIndex="99" Content="Do not show this dialog again?" />
+            <CheckBox Checked="chbMain_Checked" Unchecked="chbMain_Unchecked" FontSize="16" Margin="10,0,10,0" Padding="5" x:Name="chbMain" Foreground="Black" Panel.ZIndex="99" Content="Do not show this dialog again?" />
         </Border>
 
         <Border Height="449" Width="750" CornerRadius="40" Canvas.Top="1" >

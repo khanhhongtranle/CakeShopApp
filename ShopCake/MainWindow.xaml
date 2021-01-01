@@ -7,10 +7,10 @@
         xmlns:converter="clr-namespace:ShopCake.Helpers"
         mc:Ignorable="d"
         Title="Cake Shop" Height="650" Width="1280">
-   
+
     <DockPanel Name="_mainWindow" LastChildFill="True">
         <Grid Background="#efefef" Height="100" DockPanel.Dock="Top">
-            <StackPanel Orientation="Horizontal" Height="100" Name="topBar" HorizontalAlignment="Right" Margin="0 0 250 0">
+            <StackPanel Orientation="Horizontal" Height="100" Name="topBar" HorizontalAlignment="Right" Margin="0 0 50 0">
                 <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="15,0,0,0">
                     <Image Source="Assets/menu.png" Opacity="0.8" RenderOptions.BitmapScalingMode="HighQuality" Width="40" HorizontalAlignment="Center" VerticalAlignment="Center"></Image>
                     <Label Name="MenuCakesMenu" MouseUp="MenuCakesMenu_MouseUp" Cursor="Hand" Content="MENU" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Foreground="#555" FontSize="18" VerticalAlignment="Center"></Label>
@@ -23,23 +23,21 @@
                     <Image Source="Assets/report.png" Opacity="0.6" RenderOptions.BitmapScalingMode="HighQuality" Width="25" HorizontalAlignment="Center" VerticalAlignment="Center"></Image>
                     <Label Name="MenuReport" MouseUp="MenuReport_MouseUp" Cursor="Hand" Content="REPORT" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Foreground="#555" FontSize="18" VerticalAlignment="Center"></Label>
                 </StackPanel>
+
+                <Border Width="102" Height="50" Margin="20,25,30,25" BorderThickness="1.2" BorderBrush="#555" CornerRadius="15" HorizontalAlignment="Right">
+                    <StackPanel MouseLeftButtonUp="Cart" Orientation="Horizontal" VerticalAlignment="Center" Margin="0,0,0,0">
+                        <Label Cursor="Hand" Content="Cart" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Foreground="#555" FontSize="18" Margin="7 0 0 0" VerticalAlignment="Center"/>
+                        <Border Width="40" Margin="0,0,25,0">
+                            <Grid>
+                                <Image Source="Assets/shopping-cart.png" Opacity="0.6" RenderOptions.BitmapScalingMode="HighQuality" Width="40" HorizontalAlignment="Center" VerticalAlignment="Center"></Image>
+                            </Grid>
+                        </Border>
+                    </StackPanel>
+                </Border>
             </StackPanel>
-            <Border Width="200" Height="50" Margin="0,0,25,0" BorderThickness="1.2" BorderBrush="#555" CornerRadius="15" HorizontalAlignment="Right">
-                <StackPanel MouseLeftButtonUp="Cart" Orientation="Horizontal" VerticalAlignment="Center" Margin="0,0,0,0">
-                    <Label Cursor="Hand" Content="Cart /0 VNĐ" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Foreground="#555" FontSize="18" Margin="7 0 0 0" VerticalAlignment="Center"/>
-                    <Border Width="40" Margin="0,0,25,0">
-                        <Grid>
-                            <Image Source="Assets/shopping-cart.png" Opacity="0.6" RenderOptions.BitmapScalingMode="HighQuality" Width="40" HorizontalAlignment="Center" VerticalAlignment="Center"></Image>
-                            <Label Name="Total" Cursor="Hand" Content="{Binding Total}" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Foreground="#815D37" FontSize="12" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10,2,0,0"/>
-                        </Grid>
-                    </Border>
-                </StackPanel>
-            </Border>
             <StackPanel Orientation="Vertical" HorizontalAlignment="Left" VerticalAlignment="Center">
                 <Image x:Name="imgLogo" MouseUp="MenuCakesMenu_MouseUp" Cursor="Hand" Source="Assets/logo.png" RenderOptions.BitmapScalingMode="HighQuality" 
                        Width="80" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0 0 0 0" Height="130"/>
-
-
             </StackPanel>
         </Grid>
         <Grid Name="_frame">

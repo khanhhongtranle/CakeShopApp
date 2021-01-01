@@ -37,7 +37,9 @@ namespace ShopCake.Models
         }
         public List<String> Other_Image_List { set; get; }
 
-        public void insertToDatabase(DBHelper dBHelper)
+        private DBHelper dBHelper = ApplicationContext.DBHelper;
+
+        public void insertToDatabase()
         {
             //insert into cakes table 
             //and insert into images table, cake_img table
@@ -55,7 +57,7 @@ namespace ShopCake.Models
             }
         }
 
-        public void update(DBHelper dBHelper)
+        public void update()
         {
             //update cakes
             dBHelper.query($"update cakes set name = '{this.Name}', kindofcake_id = '{this.Kind}', description = '{this.Description}', unit_price = '{this.Unit_Price}' where id = '{this.Id}'");

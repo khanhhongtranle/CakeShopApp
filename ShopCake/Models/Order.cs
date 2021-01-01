@@ -50,7 +50,10 @@ namespace ShopCake.Models
                 }
             }
         }
-        public void insert(DBHelper dBHelper)
+
+        private DBHelper dBHelper = ApplicationContext.DBHelper;
+
+        public void insert()
         {
             DateTime today = DateTime.Now;
             OrderID = today.ToString();

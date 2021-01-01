@@ -4,9 +4,120 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:ShopCake.Views"
+              xmlns:dxc="http://schemas.devexpress.com/winfx/2008/xaml/charts" 
+              xmlns:dvc="clr-namespace:System.Windows.Controls.DataVisualization.Charting;assembly=System.Windows.Controls.DataVisualization.Toolkit"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
+             d:DesignHeight="650" d:DesignWidth="1280" >
     <Grid>
-            
+        <StackPanel>
+          
+            <StackPanel DockPanel.Dock="Left">
+                <DockPanel  Margin="0 50 0 0">
+
+                    <ItemsControl x:Name="ItemPieChart" DockPanel.Dock="Left" BorderBrush="Black" >
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel>
+                                    <lvc:PieChart Series="{Binding Data}" Width="300" Height="300" FontSize="10" LegendLocation="Left" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="50,0,0,0">
+                                    </lvc:PieChart>
+
+                                </StackPanel>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+
+
+                    <ItemsControl x:Name="ItemSFChart" DockPanel.Dock="Right" Margin="200 0 10 0" BorderBrush="Black" Width="auto" >
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Grid Margin="0 0 50 0">
+                                    <chart:SfChart Header="          Sale In Month" >
+
+                                        <chart:SfChart.PrimaryAxis>
+                                            <chart:CategoryAxis />
+                                        </chart:SfChart.PrimaryAxis>
+                                        <chart:SfChart.SecondaryAxis>
+                                            <chart:NumericalAxis  LabelFormat="####### VND"/>
+                                        </chart:SfChart.SecondaryAxis>
+                                        <chart:ColumnSeries Margin="0 0 0 0" Palette="Elite"  ItemsSource="{Binding Datas}" XBindingPath="Month" YBindingPath="Price">
+                                            <chart:ColumnSeries.AdornmentsInfo>
+                                                <chart:ChartAdornmentInfo ShowLabel="True" Margin="0 5 0 0 " FontSize="10"/>
+                                            </chart:ColumnSeries.AdornmentsInfo>
+
+                                        </chart:ColumnSeries>
+                                    </chart:SfChart>
+                                </Grid>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+
+
+                </DockPanel>
+                <Grid Margin="0 20 0 50">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <ToggleButton  Grid.Column="0"
+                                      Style="{StaticResource MaterialDesignActionToggleButton}"
+                                      ToolTip="MaterialDesignActionLightToggleButton"  Background="#FF2195F2">
+                        <materialDesign:ToggleButtonAssist.OnContent>
+                            <materialDesign:PackIcon
+                                          Kind="Sale" />
+                        </materialDesign:ToggleButtonAssist.OnContent>
+                        <materialDesign:PackIcon
+                                          Kind="Sale" />
+                    </ToggleButton>
+                    <ToggleButton  Grid.Column="1"
+                            Style="{StaticResource MaterialDesignActionToggleButton}"
+                            ToolTip="MaterialDesignActionLightToggleButton"  Background="#FFF34336">
+                        <materialDesign:ToggleButtonAssist.OnContent>
+                            <materialDesign:PackIcon
+                                    Kind="Shopping" />
+                        </materialDesign:ToggleButtonAssist.OnContent>
+                        <materialDesign:PackIcon
+                                Kind="Shopping" />
+                    </ToggleButton>
+                    <ToggleButton   Grid.Column="3"
+                            Style="{StaticResource MaterialDesignActionToggleButton}"
+                            ToolTip="MaterialDesignActionLightToggleButton"  Background="#FFFEC007">
+                        <materialDesign:ToggleButtonAssist.OnContent>
+                            <materialDesign:PackIcon
+                                    Kind="Reproduction"  />
+                        </materialDesign:ToggleButtonAssist.OnContent>
+                        <materialDesign:PackIcon
+                                Kind="Reproduction" />
+                    </ToggleButton>
+                    <ToggleButton  Grid.Column="4"
+                                Style="{StaticResource MaterialDesignActionToggleButton}"
+                                ToolTip="MaterialDesignActionLightToggleButton" Background="#FF607D8A">
+                        <materialDesign:ToggleButtonAssist.OnContent>
+                            <materialDesign:PackIcon
+                                        Kind="HomeMapMarker" />
+                        </materialDesign:ToggleButtonAssist.OnContent>
+                        <materialDesign:PackIcon
+                                    Kind="HomeMapMarker" />
+                    </ToggleButton>
+                    <ToggleButton Grid.Column="2"
+                            Style="{StaticResource MaterialDesignActionToggleButton}"
+                            ToolTip="MaterialDesignActionLightToggleButton" Background="#FF607D8A">
+                        <materialDesign:ToggleButtonAssist.OnContent>
+                            <materialDesign:PackIcon
+                                    Kind="Check" />
+                        </materialDesign:ToggleButtonAssist.OnContent>
+                        <materialDesign:PackIcon
+                                Kind="Check" />
+                    </ToggleButton>
+
+                </Grid>
+
+            </StackPanel>
+
+
+
+        </StackPanel>
     </Grid>
 </UserControl>

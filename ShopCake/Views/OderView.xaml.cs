@@ -52,9 +52,8 @@ namespace ShopCake.Views
             if (resultComfirm == MessageBoxResult.OK)
             {
                 //save this order
-                DBHelper dBHelper = new DBHelper();
-                order.insert(dBHelper);
-                dBHelper.close();
+                DBHelper dBHelper = ApplicationContext.DBHelper;
+                order.insert();
                 MessageBoxResult successComfirm = MessageBox.Show("This order has completed yet.", "Notification");
 
             }

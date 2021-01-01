@@ -36,7 +36,7 @@ namespace ShopCake.Views
             InitializeComponent();
             this.currentCake = cake;
             this.newCake = cake;
-            dBHelper = new DBHelper();
+            dBHelper = ApplicationContext.DBHelper;
             imagesList = new ObservableCollection<string>();
             kindsList = new List<AKindOfCake>();
         }
@@ -148,7 +148,7 @@ namespace ShopCake.Views
                 }
                 newCake.Images_List = imgListToSave;
                 //update cake
-                newCake.update(dBHelper);
+                newCake.update();
 
                 MessageBoxResult resultSuccess = MessageBox.Show("Updated successfully", "Notification");
             }

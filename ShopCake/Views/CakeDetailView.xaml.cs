@@ -34,7 +34,7 @@ namespace ShopCake.Views
         {
             InitializeComponent();
             this.cake = item;
-            this.dBHelper = new DBHelper();
+            this.dBHelper = ApplicationContext.DBHelper;
             _listForShowImages = new ObservableCollection<Cake>();
         }
 

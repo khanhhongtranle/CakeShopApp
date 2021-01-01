@@ -22,16 +22,7 @@ namespace ShopCake
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     /// 
-    public static class ApplicationContext
-    {
-        private static Order _order = new Order();
-        public static Order Order
-        {
-            get { return _order; }
-            set { _order = value; }
-        }
-
-    }
+   
 
     public partial class MainWindow : Window
     {
