@@ -80,14 +80,12 @@
                         <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top">
                         <StackPanel>
                             <Label Content="{Binding Name}" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Foreground="#555" FontSize="32" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="2,20,0,0" FontWeight="Bold"/>
-                                <Image Opacity="0.7" MouseDown="_editProduct_MouseDown" Cursor="Hand" Source="../Assets/Pencil-icon.png" RenderOptions.BitmapScalingMode="HighQuality" Width="30" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10,-20,20,0"></Image>
                         </StackPanel>
                          
                         <WrapPanel Margin="6,6,0,0">
                                 <TextBlock Text="{Binding Unit_Price_Display}" FontSize="27" Foreground="Black" TextWrapping="Wrap" Background="{x:Null}" VerticalAlignment="Center" TextAlignment="Justify" FontWeight="Bold"></TextBlock>
                                 <TextBlock Text=" VNĐ" FontSize="22" Foreground="Black" TextWrapping="Wrap" Background="{x:Null}" VerticalAlignment="Center" TextAlignment="Justify" FontWeight="Bold"></TextBlock>
                             </WrapPanel>
-                            <Border Background="#FF004400" Height="5" Width="52" HorizontalAlignment="Left" Margin="6,10,0,0"></Border>
                             <StackPanel Margin="10,26,6,0">
                                 <TextBlock TextWrapping="Wrap" Text="{Binding Description}" FontSize="22" Foreground="#555" VerticalAlignment="Center" TextAlignment="Justify"></TextBlock>
                             </StackPanel>
@@ -114,7 +112,9 @@
                                         </Label.Content>
                                     </Label>
                                 </Border>
-                            </StackPanel>
+                            <Image MouseDown="_editProduct_MouseDown" Cursor="Hand" Source="../Assets/Pencil-icon.png" RenderOptions.BitmapScalingMode="HighQuality" Width="30" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10,10,20,0"></Image>
+
+                        </StackPanel>
                         </StackPanel>
                     </ScrollViewer>
                 </Grid>

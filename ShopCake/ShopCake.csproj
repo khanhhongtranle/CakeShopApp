@@ -214,10 +214,6 @@
     <Resource Include="Assets\menu.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Assets\prev.png" />
-    <Resource Include="Assets\togo.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Assets\cancel.png" />
   </ItemGroup>
   <ItemGroup>

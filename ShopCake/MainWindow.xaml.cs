@@ -61,5 +61,20 @@ namespace ShopCake
             _frame.Children.Clear();
             _frame.Children.Add(new OderView());
         }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {  
+                MessageBoxResult result =
+                  MessageBox.Show(
+                    "Are you close?",
+                    "Data App",
+                    MessageBoxButton.YesNo,
+                    MessageBoxImage.Warning);
+                if (result == MessageBoxResult.No)
+                {
+                    // If user doesn't want to close, cancel closure
+                    e.Cancel = true;
+                }
+        }
     }
 }

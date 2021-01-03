@@ -7,7 +7,7 @@
         xmlns:converter="clr-namespace:ShopCake.Helpers"
         mc:Ignorable="d"
         Icon="Assets/logo.png"
-        Title="Cake Shop" Height="650" Width="1280">
+        Title="Cake Shop" Height="650" Width="1280" Closing="Window_Closing">
 
     <DockPanel Name="_mainWindow" LastChildFill="True">
         <Grid Background="#edf0f7" Height="100" DockPanel.Dock="Top">
