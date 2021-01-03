@@ -6,10 +6,11 @@
         xmlns:local="clr-namespace:ShopCake"
         xmlns:converter="clr-namespace:ShopCake.Helpers"
         mc:Ignorable="d"
+        Icon="Assets/logo.png"
         Title="Cake Shop" Height="650" Width="1280">
 
     <DockPanel Name="_mainWindow" LastChildFill="True">
-        <Grid Background="#efefef" Height="100" DockPanel.Dock="Top">
+        <Grid Background="#edf0f7" Height="100" DockPanel.Dock="Top">
             <StackPanel Orientation="Horizontal" Height="100" Name="topBar" HorizontalAlignment="Right" Margin="0 0 50 0">
                 <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="15,0,0,0">
                     <Image Source="Assets/menu.png" Opacity="0.8" RenderOptions.BitmapScalingMode="HighQuality" Width="40" HorizontalAlignment="Center" VerticalAlignment="Center"></Image>
@@ -36,7 +37,7 @@
                 </Border>
             </StackPanel>
             <StackPanel Orientation="Vertical" HorizontalAlignment="Left" VerticalAlignment="Center">
-                <Image x:Name="imgLogo" MouseUp="MenuCakesMenu_MouseUp" Cursor="Hand" Source="Assets/logo.png" RenderOptions.BitmapScalingMode="HighQuality" 
+                <Image x:Name="imgLogo" MouseUp="MenuCakesMenu_MouseUp" Cursor="Hand" Source="Assets/store-icon.png" RenderOptions.BitmapScalingMode="HighQuality" 
                        Width="80" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0 0 0 0" Height="130"/>
             </StackPanel>
         </Grid>

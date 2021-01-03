@@ -25,8 +25,8 @@
             </Grid>
             <Grid Grid.Row="0" HorizontalAlignment="Right">
                 <StackPanel Name="_pagination" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
-                    <Image MouseDown="Prev_Click"  Cursor="Hand" Source="../Assets/prev.png" RenderOptions.BitmapScalingMode="HighQuality" Width="40" HorizontalAlignment="Center" VerticalAlignment="Center"></Image>
-                    <Image MouseDown="Next_Click" Cursor="Hand" Source="../Assets/togo.png" RenderOptions.BitmapScalingMode="HighQuality" Width="40" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10,0,20,0"></Image>
+                    <Image MouseDown="Prev_Click"  Cursor="Hand" Source="../Assets/back-icon.png" RenderOptions.BitmapScalingMode="HighQuality" Width="40" HorizontalAlignment="Center" VerticalAlignment="Center"></Image>
+                    <Image MouseDown="Next_Click" Cursor="Hand" Source="../Assets/forward-icon.png" RenderOptions.BitmapScalingMode="HighQuality" Width="40" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10,0,20,0"></Image>
                 </StackPanel>
             </Grid>
             <Grid Grid.Row="1">
@@ -52,7 +52,7 @@
                                             <AccessText TextWrapping="Wrap" Text="{Binding Name}"></AccessText>
                                         </Label.Content>
                                     </Label>
-                                    <TextBlock Text="{Binding Unit_Price}" FontSize="20" Foreground="Black" TextWrapping="Wrap" Background="{x:Null}" VerticalAlignment="Center" TextAlignment="Justify" FontWeight="DemiBold">  VNĐ</TextBlock>
+                                    <TextBlock Text="{Binding Unit_Price_Display}" FontSize="20" Foreground="Black" TextWrapping="Wrap" Background="{x:Null}" VerticalAlignment="Center" TextAlignment="Justify" FontWeight="DemiBold">  VNĐ</TextBlock>
                                 </StackPanel>
                             </DockPanel>
                         </DataTemplate>

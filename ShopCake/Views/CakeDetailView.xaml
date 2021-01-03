@@ -22,7 +22,8 @@
                         <RowDefinition/>
                     </Grid.RowDefinitions>
                     <Grid Grid.Row="0" Margin="10">
-                        <Image Source="{Binding ThumbnailPath,  Converter={StaticResource imagePathConverter}}" RenderOptions.BitmapScalingMode="HighQuality" Stretch="UniformToFill"></Image>
+                   
+                    <Image Source="{Binding ThumbnailPath,  Converter={StaticResource imagePathConverter}}" RenderOptions.BitmapScalingMode="HighQuality" Stretch="UniformToFill"></Image>
                     </Grid>
                     <Grid Grid.Row="1" Margin="5">
                     <ItemsControl Margin="5,0,0,0" Name="PreviewPhoto">
@@ -73,15 +74,17 @@
                             <Label Content="Menu /" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Foreground="#555" FontSize="18" VerticalAlignment="Center" HorizontalAlignment="Left"/>
                             <Label Name="KindLabel" Content="{Binding}" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Foreground="#555" FontSize="18" VerticalAlignment="Center" HorizontalAlignment="Left"/>
                         </StackPanel>
-                        <StackPanel Cursor="Hand" MouseDown="_editProduct_MouseDown" Name="_editProduct" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Top">
-                            <Label Content="Edit" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Foreground="#555" FontSize="18" VerticalAlignment="Center" HorizontalAlignment="Left"/>
-                        </StackPanel>
+                     
                     </Grid>
                     <ScrollViewer VerticalScrollBarVisibility="Hidden" Grid.Row="1" Margin="5,5,10,5">
                         <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top">
+                        <StackPanel>
                             <Label Content="{Binding Name}" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Foreground="#555" FontSize="32" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="2,20,0,0" FontWeight="Bold"/>
-                            <WrapPanel Margin="6,6,0,0">
-                                <TextBlock Text="{Binding Unit_Price}" FontSize="27" Foreground="Black" TextWrapping="Wrap" Background="{x:Null}" VerticalAlignment="Center" TextAlignment="Justify" FontWeight="Bold"></TextBlock>
+                                <Image Opacity="0.7" MouseDown="_editProduct_MouseDown" Cursor="Hand" Source="../Assets/Pencil-icon.png" RenderOptions.BitmapScalingMode="HighQuality" Width="30" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10,-20,20,0"></Image>
+                        </StackPanel>
+                         
+                        <WrapPanel Margin="6,6,0,0">
+                                <TextBlock Text="{Binding Unit_Price_Display}" FontSize="27" Foreground="Black" TextWrapping="Wrap" Background="{x:Null}" VerticalAlignment="Center" TextAlignment="Justify" FontWeight="Bold"></TextBlock>
                                 <TextBlock Text=" VNĐ" FontSize="22" Foreground="Black" TextWrapping="Wrap" Background="{x:Null}" VerticalAlignment="Center" TextAlignment="Justify" FontWeight="Bold"></TextBlock>
                             </WrapPanel>
                             <Border Background="#FF004400" Height="5" Width="52" HorizontalAlignment="Left" Margin="6,10,0,0"></Border>

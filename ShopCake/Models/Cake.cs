@@ -22,6 +22,18 @@ namespace ShopCake.Models
         public string Entered_Date { get; set; }
         public int Kind { get; set; }
         public double Unit_Price { get; set; }
+        private string _unit_price_display;
+        public string Unit_Price_Display
+        {
+            get
+            {
+                return string.Format("{0,-10:N0}", Unit_Price);
+            }
+            set
+            {
+                _unit_price_display = value;
+            }
+        }
         public List<String> Images_List { get; set; }
         private string _thumbnailPath;
         public string ThumbnailPath

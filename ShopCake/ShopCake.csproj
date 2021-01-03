@@ -233,6 +233,20 @@
     <Resource Include="Assets\add-without-border.png" />
     <Resource Include="Assets\dash.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\Go-back-icon.png" />
+    <Resource Include="Assets\Pencil-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\Upload-Folder-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\store-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\back-icon.png" />
+    <Resource Include="Assets\forward-icon.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

@@ -14,7 +14,7 @@
             </WrapPanel>
             <WrapPanel HorizontalAlignment="Right">
                 <Image Name="imgSave" MouseDown="imgSave_MouseDown" Source="../Assets/save.ico" Cursor="Hand" Width="50" RenderOptions.BitmapScalingMode="HighQuality" Stretch="UniformToFill" Height="50" Margin="0 10 15 0"></Image>
-                <Image Name="imgCancel" MouseDown="imgCancel_MouseDown" Source="../Assets/cancel-red.png" Cursor="Hand" Width="45" RenderOptions.BitmapScalingMode="HighQuality" Stretch="UniformToFill" Height="40" Margin="0 10 15 0"></Image>
+                <Image Name="imgCancel" MouseDown="imgCancel_MouseDown" Source="../Assets/Go-back-icon.png" Cursor="Hand" Width="45" RenderOptions.BitmapScalingMode="HighQuality" Stretch="UniformToFill" Height="40" Margin="0 10 15 0"></Image>
             </WrapPanel>
         </Grid>
         <Grid>
@@ -78,9 +78,11 @@
                     <RowDefinition Height="80"></RowDefinition>
                     <RowDefinition></RowDefinition>
                 </Grid.RowDefinitions>
-                <Border MouseDown="ChooseImg_Click" Cursor="Hand" Grid.Row="0" Margin="0,10,0,0" BorderThickness="1" Background="#FF8998AC" BorderBrush="#5D4037" CornerRadius="5">
+                <Border MouseDown="ChooseImg_Click" Cursor="Hand" Grid.Row="0" Margin="0,10,0,0" BorderThickness="1" Background="#94bdff" BorderBrush="#94bdff" CornerRadius="5">
                     <Button Height="70" x:Name="ChooseImg" BorderBrush="{x:Null}" Background="{x:Null}" Foreground="#FF2B2B2B" FontSize="14" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch" HorizontalAlignment="Center" VerticalAlignment="Center">
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <Image Name="imgUpload" Source="../Assets/Upload-Folder-icon.png" Cursor="Hand" Width="45" RenderOptions.BitmapScalingMode="HighQuality" Stretch="UniformToFill" Height="40" Margin="0 -10 15 0"></Image>
+
                             <Label Content="Upload picture(s)" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Foreground="White" FontSize="25" VerticalAlignment="Center" FontFamily="Arial"/>
                         </StackPanel>
                     </Button>
