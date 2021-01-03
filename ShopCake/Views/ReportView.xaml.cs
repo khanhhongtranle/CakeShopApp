@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ShopCake.Helpers;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -60,7 +61,7 @@ namespace ShopCake.Views
             var dataRaw = dBHelper.query("select date_entered, total from orders", true);
             foreach(var record in dataRaw)
             {
-                string gotMonth = $"{record["date_entered"][0]}{record["date_entered"][1]}";
+                string gotMonth = StringHelper.CutStringTo(record["date_entered"],'/');
                 totalsByMonth[int.Parse(gotMonth) - 1] += int.Parse(record["total"]);
             }
 
@@ -89,11 +90,10 @@ namespace ShopCake.Views
 
             //pie chart
             ObservableCollection<PiePoint> PieCollection = new ObservableCollection<PiePoint>();
-
-            var data2Raw = dBHelper.query("select kindofcakes.name, order_cake.amount from order_cake join cakes on order_cake.cake_id = cakes.id JOIN kindofcakes on cakes.kindofcake_id = kindofcakes.id;", true);
-            foreach(var record in data2Raw)
+            var data2Raw = dBHelper.query("select kindofcakes.name, sum(order_cake.amount) as sum_amount from order_cake join cakes on order_cake.cake_id = cakes.id JOIN kindofcakes on cakes.kindofcake_id = kindofcakes.id group by kindofcakes.name;", true);
+            foreach (var record in data2Raw)
             {
-                PieCollection.Add(new PiePoint { Name = record["name"], Total = int.Parse(record["amount"]) });
+                PieCollection.Add(new PiePoint { Name = record["name"], Total = int.Parse(record["sum_amount"]) });
             }
             pieSeries.ItemsSource = PieCollection;
 

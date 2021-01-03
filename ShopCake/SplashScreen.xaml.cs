@@ -44,7 +44,6 @@ namespace ShopCake
     }
     public partial class SplashScreen : Window
     {
-        private static bool check = false;
         private DBHelper dBHelper;
         private ObservableCollection<Cake> cakeList;
 
@@ -59,7 +58,10 @@ namespace ShopCake
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            if (check)
+            int check;
+            var temp = this.dBHelper.query("select value from config where name = 'check'", true);
+            check = int.Parse(temp[0]["value"]);
+            if (check == 1)
             {
                 this.Hide();
                 var screen = new MainWindow();
@@ -106,12 +108,12 @@ namespace ShopCake
 
         private void chbMain_Checked(object sender, RoutedEventArgs e)
         {
-            check = true;
+            this.dBHelper.query("update config set value = 1 where name = 'check'");
         }
 
         private void chbMain_Unchecked(object sender, RoutedEventArgs e)
         {
-
+            
         }
     }
 }

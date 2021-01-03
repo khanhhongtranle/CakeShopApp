@@ -55,7 +55,9 @@ namespace ShopCake.Views
                 DBHelper dBHelper = ApplicationContext.DBHelper;
                 order.insert();
                 MessageBoxResult successComfirm = MessageBox.Show("This order has completed yet.", "Notification");
-
+                OrderCakeList.Clear();
+                _quanlity.Content = "";
+                _total.Content = "";
             }
             else
             {

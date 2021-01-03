@@ -8,7 +8,7 @@ public class DBHelper
 
     public DBHelper()
     {
-        this.conn = new SQLiteConnection(@"URI=file:D:\STUDY\NAM_TU\LAP_TRINH_WINDOWS\projects\ShopCake\ShopCake\Db\db.sqlite");
+        this.conn = new SQLiteConnection(@"URI=file:Database\db.sqlite");
         this.conn.Open();
     }
 
@@ -51,6 +51,12 @@ public class DBHelper
                             quantity INTEGER,
                             price INTEGER,
                             amount INTEGER);";
+        cmd.ExecuteNonQuery();
+
+        cmd.CommandText = @"CREATE TABLE IF NOT EXISTS config(
+                            id INTEGER,
+                            name TEXT,
+                            value INTEGER);";
         cmd.ExecuteNonQuery();
     }
     
