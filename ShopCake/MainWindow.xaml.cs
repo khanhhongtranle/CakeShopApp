@@ -52,7 +52,8 @@ namespace ShopCake
 
         private void MenuReport_MouseUp(object sender, RoutedEventArgs e)
         {
-
+            _frame.Children.Clear();
+            _frame.Children.Add(new ReportView());
         }
 
         private void Cart(object sender, MouseButtonEventArgs e)
